@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "bm-comparts";
+    src:url("../bm-comparts.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+  
+
+  [class^="icn-"]:before,
+  [class*=" icn-"]:before {
+    font-family: "bm-comparts" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icn-6:before { content: "d"; } /* chemical */
+  .icn-15:before { content: "a"; } /* it */
+  .icn-14:before { content: "b"; } /* industry */
+  .icn-4:before { content: "c"; } /* gift */
+  .icn-3:before { content: "e"; } /* furniture */
+  .icn-2:before { content: "f"; } /* food */
+  .icn-12:before { content: "g"; } /* finance */
+  .icn-8:before { content: "k"; } /* building */
+  .icn-22:before { content: "m"; } /* advertisement */
+  .icn-16:before { content: "n"; } /* machines */
+  .icn-17:before { content: "o"; } /* material */
+  .icn-25:before { content: "r"; } /* offices */
+  .icn-5:before { content: "s"; } /* printing */
+  .icn-21:before { content: "t"; } /* professional */
+  .icn-11:before { content: "u"; } /* public */
+  .icn-20:before { content: "v"; } /* shop */
+  .icn-23:before { content: "w"; } /* sport */
+  .icn-24:before { content: "y"; } /* tourism */
+  .icn-26:before { content: "z"; } /* transport */
+  .icn-9:before { content: "h"; } /* books */
+  .icn-1:before { content: "i"; } /* clothes */
+  .icn-7:before { content: "j"; } /* ecology */
+  .icn-10:before { content: "l"; } /* electric */
+  .icn-19:before { content: "q"; } /* medical */
+  .icn-13:before { content: "x"; } /* supplies */
+  .icn-18:before { content: "p"; } /* mechanic */

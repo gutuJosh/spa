@@ -1,0 +1,256 @@
+
+.top-header{
+    background-color: #5c3cff;
+    width:100%;
+    min-height:6rem;
+    max-height:100%;
+    &.sticky{
+        position:sticky;
+        top:0;
+        left:0;
+        z-index: 1000;
+        box-shadow:0 3px 6px rgba(0,0,0,0.2);
+    }
+}
+.top-menu{
+    display:flex;
+    flex-wrap: wrap;
+    @media (max-width: $screen-sm-max) {
+        .logo-container{
+            order:2;
+            width:calc(100% - 50px);
+        }
+        .navigation{
+            order:1; 
+            width:100%;
+            background-color: #5057FE;
+            padding:0;
+            box-sizing: border-box;
+            display:block;
+            max-height:0px;
+            overflow-y: auto;
+            z-index:100;
+            transition: max-height 0.6s ease-out;
+            scroll-behavior: smooth;
+            box-shadow: inset 0px 6px 6px 0px rgba(0,0,0, 0.1);
+            &.active{
+                max-height: 400px;
+            }
+            li{
+                background-color: #5057FE;
+                padding:0;
+                &.dropdown > a{
+                    &:after{
+                        border-left:4px solid transparent;
+                        border-top:4px solid $snow;
+                    }
+                }
+                &.dropdown > a:hover{
+                    &:after{
+                        border-top:4px solid $blue;
+                        border-right:4px solid transparent;
+                        border-left:4px solid transparent;
+                        border-bottom:4px solid transparent;
+                    }
+                }
+                &.dropdown  ul{
+                    position:relative;
+                    margin:0 auto;
+                    width:calc(100% - 10px);
+                    top:inherit;
+                    left:inherit;
+                    z-index: inherit;
+                    box-sizing: border-box;
+                    li{
+                        padding:inherit;
+                        background:transparent;
+                        border-bottom: none;
+                        a:after{
+                            border-left:4px solid $blue;
+                         }
+                    }
+                }
+                &.dropdown:hover{
+                    background-color:inherit;
+                }
+                &.dropdown.open{
+                    ul{
+                      max-height:1000px;
+                    }
+                }
+                &.dropdown:hover > a{
+                    color:inherit;
+                    background-color:rgba(255, 255, 255, 1); 
+                }
+                &.dropdown.open > a{
+                    &:after{
+                        border-top:4px solid transparent;
+                        border-right:4px solid transparent;
+                        border-left:4px solid transparent;
+                        border-bottom:4px solid $blue;
+                    }
+                }
+              a{
+                 display:inline-block; 
+                 width: calc(100% - 10px);
+                 box-sizing: border-box;
+                 margin:5px;
+                 background-color:rgba(255, 255, 255, 0.1);
+                 line-height:3rem;
+                 &:hover{
+                    background-color:rgba(255, 255, 255, 1); 
+                    &:after{
+                        border-left:4px solid $blue;
+                    }
+                 }
+                 &:after{
+                    content:'';
+                    position:absolute;
+                    width:0; 
+                    height:0;
+                    border-top:4px solid transparent;
+                    border-bottom:4px solid transparent;
+                    border-right:4px solid transparent;
+                    border-left:4px solid $snow;
+                    top:50%; 
+                    right:10px;
+                    transform: translateY(-50%);
+                 }
+             }
+            }
+
+        }
+        .cart-container{
+            order:3;
+        }
+    }
+}
+
+.logo-container{
+    padding:10px 10px 0 20px;
+    .logo{
+        width:167px;
+        height:40px;
+        display: inline-block;
+        background:url('/images/logo-bancomail-offline.png') center center no-repeat; 
+    }
+    .menu-icon{
+        display:none;
+        height:20px;
+        width:26px;
+        position:relative;
+        top:16px;
+        margin-right:10px;
+        &:after{
+            content:'';
+            display: block;
+            width:100%;
+            height:3px;
+            background-color: $snow;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        &:before{
+            content:'';
+            display: block;
+            width:100%;
+            height:3px;
+            background-color: $snow;
+            position: absolute;
+            bottom:0;
+            left:0;
+        }
+        span{
+            display: block;
+            width:100%;
+            height:3px;
+            background-color: $snow;
+            position: absolute;
+            top:50%;
+            left:0;
+            transform:translateY(-50%);
+        }
+        @media (max-width: $screen-sm-max) {
+            display: inline-block;
+        }
+
+    }
+
+    .menu-icon:hover, .menu-icon.active{
+        &:before, &:after, span{
+            background-color: $yellow;
+        }
+    }
+}
+.navigation{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    li{
+        padding:0 5px;
+        position: relative;
+        &.dropdown  ul{
+            position:absolute;
+            top:60px;
+            left:0;
+            width:160%;
+            background-color: $snow;
+            z-index: 100;
+            box-shadow: 0 26px 21px 0 rgba(0,0,0,0.1);
+            max-height:0;
+            overflow-y:hidden;
+            transition: all 0.3s ease-out;
+            li{
+                background-color: $snow;
+                padding:15px 5px;
+                border-bottom:1px solid $light-grey;
+                &:last-child{
+                    border-bottom:none;
+                }
+              
+                a{
+                    line-height: 1.6rem;
+                    color:$blue;
+                } 
+            }
+        }
+        &.dropdown.open{
+            background-color: $snow;
+            ul{
+              max-height:1000px;
+            }
+        }
+        &.dropdown:hover > a{
+            color:$blue
+        }
+    }
+    a{
+      line-height: 6rem;
+      font-size: 1.6rem;
+      color:$snow;
+      font-weight:400;
+      padding:10px;
+      transition: all 0.3s ease-out;
+      &:hover{
+           color:$blue;
+           background-color: $snow;
+      }
+    }
+    &.dropdown > a{
+        &:after{
+            content:'';
+            position:absolute;
+            width:0; 
+            height:0;
+            border-left:4px solid transparent;
+            border-right:4px solid transparent;
+            border-top:4px solid $snow;
+            border-bottom:4px solid transparent;
+            top:50%; 
+            right:0;
+            transform: translateY(-50%);
+        }
+    }
+}

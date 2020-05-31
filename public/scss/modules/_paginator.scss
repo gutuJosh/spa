@@ -1,0 +1,26 @@
+.paginator{
+ li{
+     display:inline-block;
+     &.active, &:hover{
+        a{
+            background-color: $dark-grey; 
+            color:$snow;  
+        }
+     }
+ }
+ a{
+    background-color: $light-grey;
+    padding: 3px 10px;
+    display: flex;
+    margin: 10px 0 0 10px;
+    align-items: center;
+    justify-content: center;
+    color:$dark-grey;
+    transition: background 0.3s ease-out, color 0.3s ease-out;
+    height:30px;
+ }
+ a[data-action="next"],  
+ a[data-action="prev"]{
+     width:30px;
+ }
+}
