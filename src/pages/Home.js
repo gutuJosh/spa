@@ -121,7 +121,7 @@ export default class Home extends React.Component {
               <ListItem 
                  link="/liste-email/garanzie"
                  linkTxt="Validati e garantiti"
-                 text="Nessun record duplicato, check A/MX Record, validità formale e controllo della complain inclination. Garanzia vuol dire sostituzione: se trovi indirizzi non funzionanti, te ne forniamo altri di eguali o differenti caratteristiche o ti rimborsiamo."
+                 text="Nessun record duplicato, check A/MX Record, validità formale e controllo della complain inclination. Garanzia vuol dire Sicurezza dei Dati: se trovi indirizzi non funzionanti, ti rimborsiamo."
                 />
               </li>
             </ul>

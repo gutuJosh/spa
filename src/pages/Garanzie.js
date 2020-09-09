@@ -36,19 +36,17 @@ function Garanzie() {
             <p className="mtop20">Giornalmente il database viene controllato ed aggiornato da un reparto dedicato. Ogni dato relativo ai diversi campi (e-mail, indirizzo, telefono, fax, cap, etc.) passa attraverso 21 differenti processi di refilazione, normalizzazione e standardizzazione al fine di garantire dati unici, aggiornati e coerenti.</p>
             <p>Il dato email viene testato periodicamente dal nostro personale. La verifica avviene attraverso controlli software incrociati atti a garantire sia l'esistenza dell'indirizzo (unknown user, Not In DSN, etc.) sia la sua
 funzionalità (over quota, spamcop etc).</p>
-            <p>Ci impegniamo a integrare e sostituire senza costi aggiuntivi tutti gli indirizzi e-mail che, nell'arco di 60 giorni dalla fornitura, si rivelassero malfunzionanti o cessati.</p>
-            <h4 className="mtop20">Come funziona la sostituzione dei bounce?</h4>
+            <p>Ci impegniamo a rimborsare tutti gli indirizzi e-mail che, nell'arco di 60 giorni dalla fornitura, si rivelassero malfunzionanti o cessati.</p>
+            <h4 className="mtop20">Come funziona il rimborso dei bounce?</h4>
+            <p>Nessuna scusa: se è un hard bounce, il risarcimento è garantito. Stabilita l'entità degli indirizzi invalidi, potrai scegliere la modalità di rimborso preferita tra:</p>
             <List number="1">  
-                <p>Nessuna scusa: se è un hard bounce, il risarcimento è garantito.</p>
-            </List>
-            <List number="2">  
                 <p>Sostituiamo gli indirizzi errati con altri di eguali o - se vuoi - differenti caratteristiche.</p>
             </List>
-            <List number="3">  
-                <p>Se preferisci ti accreditiamo un buono del valore delle anagrafiche errate con un 15% aggiuntivo di sconto.</p>
+            <List number="2">  
+                <p>Un buono valido su qualunque acquisto del valore speso per le anagrafiche errate, maggiorato in questo caso di un 30% aggiuntivo di sconto.</p>
             </List>
-            <List number="4">  
-                <p>In alternativa ti storniamo l’importo con un bonifico.</p>
+            <List number="3">  
+                <p>Un <em>Credito Anagrafiche</em>, pari al numero di record non idonei, da scalare sui successivi acquisti esclusivamente tramite preventivo (gratuito e personalizzato).</p>
             </List>
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="3">  

@@ -89,7 +89,7 @@ function Features() {
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="7">  
                 <h4 className="text-skyblue">Supporto &amp; garanzie</h4>
-                <p>Eventuali indirizzi non funzionanti sono sostituiti contrattualmente con altri di eguali o - facoltativamente - differenti caratteristiche oppure rimborsati con uno storno o un coupon. Nessun disco o voce registrata: un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, dal pre al post vendita, per qualsiasi necessità: dall’importazione alla gestione del pacchetto.</p>
+                <p>Eventuali indirizzi non funzionanti sono rimborsati con uno storno o un coupon. Nessun disco o voce registrata: un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, dal pre al post vendita, per qualsiasi necessità: dall’importazione alla gestione del pacchetto.</p>
                 <p className="small">
                  <i className="pe-7s-check"></i> Sostituzione garantita per eventuali indirizzi invalidi&nbsp; 
                  <i className="pe-7s-check"></i> Assistenza pre e post vendita&nbsp; 
