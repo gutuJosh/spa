@@ -40,7 +40,7 @@ funzionalità (over quota, spamcop etc).</p>
             <h4 className="mtop20">Come funziona il rimborso dei bounce?</h4>
             <p>Nessuna scusa: se è un hard bounce, il risarcimento è garantito. Stabilita l'entità degli indirizzi invalidi, potrai scegliere la modalità di rimborso preferita tra:</p>
             <List number="1">  
-                <p>Sostituiamo gli indirizzi errati con altri di eguali o - se vuoi - differenti caratteristiche.</p>
+                <p>Lo storno e il riaccredito del valore speso per le anagrafiche errate.</p>
             </List>
             <List number="2">  
                 <p>Un buono valido su qualunque acquisto del valore speso per le anagrafiche errate, maggiorato in questo caso di un 30% aggiuntivo di sconto.</p>
