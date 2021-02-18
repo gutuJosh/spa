@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import ListItem from "./../components/unordered-list/listItem.js";
 import SearchForm from "./../components/search-form/searchForm.js";
 import Store from "./../helpers/Storage.js";
-
+import { Translation } from 'react-i18next';
 
 export default class Home extends React.Component {
 
@@ -63,12 +63,18 @@ export default class Home extends React.Component {
          <div className="wrapper">
            <div className="flex-grid">
             <div className="center flex-lg-12 flex-md-12 flex-sm-12">
-              <h2 className="text-white">
-                  Database e Liste Indirizzi Email<br/>di Aziende per l'Email Marketing B2B
-              </h2>
+             <Translation>{(t, { i18n }) =>
+                <h2 className="text-white">
+                    {t('Database e Liste Indirizzi Email')}<br/>{t('di Aziende per l\'Email Marketing B2B')}
+                </h2>
+               }
+             </Translation>
+             <Translation>{(t, { i18n }) =>
               <h3 className="text-white">
-               8 Milioni di aziende profilate per far crescere il tuo business
+               8 {t('Milioni di aziende profilate per far crescere il tuo business')}
               </h3>
+              }
+             </Translation>
             </div>
            </div>
            <div className="flex-grid align-center">
@@ -107,14 +113,14 @@ export default class Home extends React.Component {
                 <ListItem 
                  link="/liste-email/conformita-gdpr"
                  linkTxt="Conformità GDPR e Normativa"
-                 text="I Database Bancomail rispettano il Regolamento generale sulla protezione dei dati e le Leggi Nazionali e possono essere utilizzati per finalità di Direct Marketing. "
+                 text="I Database Bancomail rispettano il Regolamento generale sulla protezione dei dati e le Leggi Nazionali e possono essere utilizzati per finalità di Direct Marketing."
                  />
               </li>
               <li>
               <ListItem 
                  link="/liste-email/caratteristiche"
                  linkTxt="Dati classificati e geo-normalizzati"
-                 text=" Una segmentazione a tre rami fino a oltre 2000 categorizzazioni. Standard ISO 3166, ITU e Standard Proprietari per oltre 15MM di record. Partite IVA secondo i Registri Nazionali, classi di fatturato, numero dipendenti e link social."
+                 text="Una segmentazione a tre rami fino a oltre 2000 categorizzazioni. Standard ISO 3166, ITU e Standard Proprietari per oltre 15MM di record. Partite IVA secondo i Registri Nazionali, classi di fatturato, numero dipendenti e link social."
                 />
               </li>
               <li>

@@ -1,7 +1,8 @@
 import React, { useState }from "react";
 import {Link, NavLink} from "react-router-dom";
 import IndexedDb  from './../../helpers/IndexedDb.js';
-
+import i18n from './../../config/i18n';
+import LanguageSelector from './LanguageSelector.js';
 
 function Menu(props) {
   
@@ -118,6 +119,24 @@ function Menu(props) {
            }}>Contatti</Link>
          </li>
         </ul>
+        <React.Fragment>
+          <LanguageSelector
+              containerClass="language-selector center"
+              selectorId="languageSelector"
+              name="browsers"
+              placeholder={ i18n.language.toLocaleUpperCase() }
+              options={[
+              {'value': 'it','title':'IT'},
+              {'value': 'en','title':'EN'},
+              {'value': 'es','title':'ES'},
+              {'value': 'fr','title':'FR'},
+            ]}
+            selectedValue={i18n.language}
+            change={(event) => {
+              i18n.changeLanguage(event.target.value);
+            }} 
+          />
+        </React.Fragment>
         <div className="cart-container center">  
          <div  className="cart">
            <div id="carrello" className="badge badge-green ">{itemsInCart}</div>
