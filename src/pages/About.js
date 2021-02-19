@@ -36,20 +36,20 @@ const About = (props) => {
           </div>
           <div className="flex-grid">
            <div className="flex-lg-6 flex-md-6 flex-sm-12">
-            <h3 className="text-skyblue">Bancomail per le agenzie:</h3>
-            <p>Bancomail offre strumenti di integrazione facili ed avanzati per consentirti di vendere facilmente il nostro Database ad un prezzo riservato. </p>
-            <p>Puoi fornire database profilati ai tuoi clienti attraverso i tuoi canali tradizionali oppure collegare il tuo sito o strumenti come piattaforme d’invio al database Bancomail.</p>
-            <p><i className="pe-7s-check"></i> Sconti fissi</p>
-            <p><i className="pe-7s-check"></i> Promozioni dedicate</p>
-            <p><i className="pe-7s-check"></i> Estensione Garanzie </p>
+            <h3 className="text-skyblue">{props.t('Bancomail per le agenzie:')}</h3>
+            <p>{props.t('Bancomail offre strumenti di integrazione facili ed avanzati per consentirti di vendere facilmente il nostro Database ad un prezzo riservato.')}</p>
+            <p>{props.t('Puoi fornire database profilati ai tuoi clienti attraverso i tuoi canali tradizionali oppure collegare il tuo sito o strumenti come piattaforme d’invio al database Bancomail.')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Sconti fissi')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Promozioni dedicate')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Estensione Garanzie')}</p>
            </div>
            <div className="flex-lg-6 flex-md-6 flex-sm-12">
-            <h3 className="text-skyblue">Bancomail per il Non Profit:</h3>
-            <p>Il programma Non Profit di Bancomail sostiene tutte le Associazioni che vogliono sviluppare attraverso l’Email Marketing un dialogo con enti e aziende.</p>
-            <p>Potrai ricevere supporto dai clienti Bancomail che sceglieranno donare alla tua Organizzazione il 10% di ogni loro acquisto. Inoltre potrai beneficiare sempre del 40% di sconto su tutti i database Bancomail.</p>
-            <p><i className="pe-7s-check"></i> Sconto fisso 40% su tutte le Liste</p>
-            <p><i className="pe-7s-check"></i> Raccolta fondi attraverso gli acquisti su Bancomai</p>
-            <p><i className="pe-7s-check"></i> Sostegno con DEM dedicate</p>
+            <h3 className="text-skyblue">{props.t('Bancomail per il Non Profit:')}</h3>
+            <p>{props.t('Il programma Non Profit di Bancomail sostiene tutte le Associazioni che vogliono sviluppare attraverso l’Email Marketing un dialogo con enti e aziende.')}</p>
+            <p>{props.t('Potrai ricevere supporto dai clienti Bancomail che sceglieranno donare alla tua Organizzazione il 10% di ogni loro acquisto.')} {props.t('Inoltre potrai beneficiare sempre del 40% di sconto su tutti i database Bancomail.')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Sconto fisso 40% su tutte le Liste')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Raccolta fondi attraverso gli acquisti su Bancomai')}</p>
+            <p><i className="pe-7s-check"></i> {props.t('Sostegno con DEM dedicate')}</p>
           </div>
          </div>
         </div>
@@ -62,8 +62,8 @@ const About = (props) => {
         <div className="wrapper">
          <div className="flex-grid">
            <div className="flex-lg-12 flex-md-12 flex-sm-12 center">
-             <p>Se hai bisogno di informazioni o se vuoi proporci una collaborazione:</p>
-             <NavLink to="/contatti" title="Preventivi" className="btn btn-yellow">Contattaci</NavLink>
+             <p>{props.t('Se hai bisogno di informazioni o se vuoi proporci una collaborazione:')}</p>
+             <NavLink to="/contatti" title="Preventivi" className="btn btn-yellow">{props.t('Contattaci')}</NavLink>
            </div>
            <div className="flex-lg-12 mtop80">&nbsp;</div>
          </div>
@@ -73,4 +73,4 @@ const About = (props) => {
   )
 }
 
-export default  withTranslation()(About);
+export default withTranslation()(About);
