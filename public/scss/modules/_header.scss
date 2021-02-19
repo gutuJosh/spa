@@ -18,7 +18,7 @@
     @media (max-width: $screen-sm-max) {
         .logo-container{
             order:2;
-            width:calc(100% - 50px);
+            width:calc(100% - 110px);
         }
         .navigation{
             order:1; 
@@ -120,8 +120,11 @@
             }
 
         }
+        .language-selector{
+            order: 3;
+        }
         .cart-container{
-            order:3;
+            order:4;
         }
     }
 }

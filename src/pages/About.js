@@ -1,16 +1,18 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import BackBtn from "../components/back-button/BackBtn.js";
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-function About() {
+const About = (props) => {
   return(
        <React.Fragment>
         <section className="section screen-blue">
          <div className="wrapper">
           <div className="flex-grid">
            <div className="flex-lg-12 flex-md-12 flex-sm-12">
-             <h2 className="text-white">Qui a Bancomail gira tutto intorno all’email marketing.</h2>
-             <p className="text-white">Fornire database per l'Email Marketing di qualità e con alti standard è quello che facciamo meglio e ciò che ci rende unici.</p>
+             <h2 className="text-white"> {props.t('Qui a Bancomail gira tutto intorno all’email marketing.')}</h2>
+             <p className="text-white"> {props.t('Fornire database per l\'Email Marketing di qualità e con alti standard è quello che facciamo meglio e ciò che ci rende unici.')}</p>
            </div>
           </div>
           <div className="flex-grid page-header mtop20">
@@ -23,11 +25,13 @@ function About() {
          <div className="page-body">
           <div className="flex-grid">
            <div className="flex-lg-12 flex-md-12 flex-sm-12">
-           <h3 className="text-skyblue">Chi siamo:</h3>
-            <p>Bancomail è l’unità di Neosoft nata nel 2001 per la vendita del più preciso e aggiornato database di aziende, in supporto alle attività di marketing B2B di altre aziende.
-             Dal 2001 abbiamo aiutato le aziende - piccole medie imprese e grandi realtà fino al settore pubblico - a raggiungere i propri clienti fornendo liste targetizzate per l’email marketing.
-            Fornire prodotti con standard qualitativi elevati è da sempre l’obiettivo che guida ogni nostra strategia, procedura o servizio. 
-             Oltre ad avere più di 8.000 clienti, collaboriamo con più di 500 partner, aziende del settore che rivendono o integrano i nostri database all’interno dei propri servizi di email marketing.</p>
+           <h3 className="text-skyblue"> {props.t('Chi siamo:')}</h3>
+            <p>
+            {props.t('Bancomail è l’unità di Neosoft nata nel 2001 per la vendita del più preciso e aggiornato database di aziende, in supporto alle attività di marketing B2B di altre aziende.')}
+            {props.t('Dal 2001 abbiamo aiutato le aziende - piccole medie imprese e grandi realtà fino al settore pubblico - a raggiungere i propri clienti fornendo liste targetizzate per l’email marketing.')}
+             {props.t('Fornire prodotti con standard qualitativi elevati è da sempre l’obiettivo che guida ogni nostra strategia, procedura o servizio.')} 
+             {props.t('Oltre ad avere più di 8.000 clienti, collaboriamo con più di 500 partner, aziende del settore che rivendono o integrano i nostri database all’interno dei propri servizi di email marketing.')}
+            </p>
            </div>
           </div>
           <div className="flex-grid">
@@ -69,4 +73,4 @@ function About() {
   )
 }
 
-export default About;
+export default  withTranslation()(About);

@@ -5803,7 +5803,7 @@ section.light {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
-    width: calc(100% - 50px);
+    width: calc(100% - 110px);
   }
   .top-menu .navigation {
     -webkit-box-ordinal-group: 2;
@@ -5904,10 +5904,15 @@ section.light {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
   }
-  .top-menu .cart-container {
+  .top-menu .language-selector {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
+  }
+  .top-menu .cart-container {
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
   }
 }
 

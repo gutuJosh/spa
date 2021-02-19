@@ -5,9 +5,10 @@ import {NavLink} from "react-router-dom";
 import ListItem from "./../components/unordered-list/listItem.js";
 import SearchForm from "./../components/search-form/searchForm.js";
 import Store from "./../helpers/Storage.js";
-import { Translation } from 'react-i18next';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
   constructor(props) {
     super(props);
@@ -63,27 +64,25 @@ export default class Home extends React.Component {
          <div className="wrapper">
            <div className="flex-grid">
             <div className="center flex-lg-12 flex-md-12 flex-sm-12">
-             <Translation>{(t, { i18n }) =>
                 <h2 className="text-white">
-                    {t('Database e Liste Indirizzi Email')}<br/>{t('di Aziende per l\'Email Marketing B2B')}
+                    {this.props.t('home:Database e Liste Indirizzi Email')}<br/>{this.props.t('home:di Aziende per l\'Email Marketing B2B')}
                 </h2>
-               }
-             </Translation>
-             <Translation>{(t, { i18n }) =>
+       
               <h3 className="text-white">
-               8 {t('Milioni di aziende profilate per far crescere il tuo business')}
+               8 {this.props.t('home:Milioni di aziende profilate per far crescere il tuo business')}
               </h3>
-              }
-             </Translation>
             </div>
            </div>
            <div className="flex-grid align-center">
             <div className="flex-lg-10 flex-md-10 flex-sm-12">
                <SearchForm action="/liste" method="get" handleSubmit={this.submitSearchForm}/>
               <div className="mtop50 center">
-               <p className="text-white">
-                  Per profilazioni avanzate richiedi un <NavLink to="/richiesta-preventivo" className="underlined text-white request-quote-btn">preventivo gratuito</NavLink>
-                 </p>
+            
+                <p className="text-white">
+                   {this.props.t('home:Per profilazioni avanzate richiedi un')}&nbsp;
+                   <NavLink to="/richiesta-preventivo" className="underlined text-white request-quote-btn">{this.props.t('home:preventivo gratuito')}</NavLink>
+                </p>
+
               </div>
             </div>
            </div>
@@ -283,7 +282,7 @@ export default class Home extends React.Component {
 	                 <label htmlFor="ac-4" className="accordion-title">Quali sono i costi?</label> 
                    <div className="ac-content">
                       <div className="pad10">
-                      <p>Il costo per ogni anagrafica (CPA) dipende dalla dimensione del pacchetto che acquisterai e varia da un massimo di 0,24 a un minimo di 0,06 euro + iva per anagrafica..</p>
+                      <p>Il costo per ogni anagrafica (CPA) dipende dalla dimensione del pacchetto che acquisterai e varia da un massimo di 0,24 a un minimo di 0,06 euro + iva per anagrafica.</p>
 	                  	<p>Esempio: una fornitura di 1.000 anagrafiche ha un CPA di 0,20 per un totale di 200,00 euro + Iva</p>
                       <table className="table table-light">
                         <thead>
@@ -355,7 +354,7 @@ export default class Home extends React.Component {
                                     <td>0,07</td>
                                       </tr>
                                       <tr>
-                                    <td>oltre 130.000</td>
+                                    <td>{this.props.t('home:oltre')} 130.000</td>
                                     <td>0,06</td>
                                       </tr>
                                       </tbody>
@@ -394,5 +393,4 @@ export default class Home extends React.Component {
    }
 
 }
-
-
+export default withTranslation()(Home);

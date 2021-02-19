@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+to install dependencies:
+### `npm install`
+
+to start the application:
 ### `npm start`
 
 Runs the app in the development mode.<br />
@@ -66,3 +70,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### `i18n generate json files from cli`
+Use i18next-parser cli
+Then go to the root folder and run : i18next 'src/**/*.{js,hbs}' 'lib/**/*.{js,hbs}' [-oc]
+Or read the instructions here: https://github.com/i18next/i18next-parser
