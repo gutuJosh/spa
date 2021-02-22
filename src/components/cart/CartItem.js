@@ -1,8 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import { formatPrice, getDiscountedPrice } from "./../../helpers/ShoppingCart.js";
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-function CartItem(props) {
+const CartItem = (props) => {
 
 
     const item = props.item;
@@ -26,7 +28,7 @@ function CartItem(props) {
         
         </div>
         <div className="flex-lg-3 flex-md-3 flex-sm-6 total-items">
-        <p className="mbottom0">Anagrafiche: {item.i}</p>
+        <p className="mbottom0">{props.t('Anagrafiche')}: {item.i}</p>
         </div>
         <div className="flex-lg-2 flex-md-2  flex-sm-6 price center">
         <p className="bottom0">
@@ -43,7 +45,7 @@ function CartItem(props) {
         </p>
         </div>
         <div className="flex-lg-2 flex-md-2 flex-sm-2 trash center">
-        <a href="/" title="Rimuovi pacchetto" onClick={ (event) => {
+        <a href="/" title={props.t("Rimuovi pacchetto")} onClick={ (event) => {
             event.preventDefault();
             props.removeItem(item.pi);
         }}>
@@ -54,4 +56,4 @@ function CartItem(props) {
     )
      
 }
-export default CartItem;
+export default withTranslation()(CartItem);

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const InputField = (props) => {
 
@@ -11,7 +13,6 @@ const InputField = (props) => {
       props.handleInput(props.name, event.target.value.trim());
     }
 
-    
       return(
         <React.Fragment>
           <div className="flex-item auto">
@@ -43,13 +44,20 @@ const InputField = (props) => {
              <ul className="custom-selector">
               {props.suggesstions && (
                props.suggesstions.map((item, i) => {
+                 
                return (
                 <li className="suggesstion-item" key={i} onClick={ (event) => {
                   event.preventDefault();
                   setValue(item);
                   props.handleSelect(props.name, item);
                  }}>
-	               {item}
+	               {props.name === 'nations' ? 
+                 <React.Fragment>
+                 {props.t(`nations:${item}`)}
+                 </React.Fragment>
+                 : 
+                 props.t(`categories:${item}`)
+                 }
                 </li> 
                 )
                }) 
@@ -70,5 +78,5 @@ const InputField = (props) => {
   
   };
 
-  export default InputField;
+  export default  withTranslation()(InputField);
   

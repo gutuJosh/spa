@@ -1,15 +1,17 @@
 import React, { useState } from "react"
+import { Translation } from 'react-i18next';
 
 const OrderSavedMessage = (props) => {
 
   const [permission, setPermissionStatus] = useState(false);
 
   return (
-    <div className="center">
+    <Translation>{(t, { i18n }) => 
+      <div className="center">
         <i className="svg svg-small svg-ok"></i>
         <p>
-            I dati sono stati salvati con successo! Non appena l'applicazione tornerà online, riceverai una email di notifica.
-            Ricordati di attivare le notifiche per essere informato subito sullo stato della tua connessione.
+            {t('I dati sono stati salvati con successo! Non appena l\'applicazione tornerà online, riceverai una email di notifica.')}
+             {t('Ricordati di attivare le notifiche per essere informato subito sullo stato della tua connessione.')}
         </p>
         <p>
           <a href="/"
@@ -17,32 +19,34 @@ const OrderSavedMessage = (props) => {
             event.preventDefault();
             if (("Notification" in window)) {
               if(Notification.permission === "granted"){
-                setPermissionStatus('Perfetto! Le notifiche da Bancomail sono attive!');
+                setPermissionStatus(t('Perfetto! Le notifiche da Bancomail sono attive!'));
               }
               else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then(function (permission) {
                   if (permission === "granted") {
-                    setPermissionStatus('Notifiche attive!');
+                    setPermissionStatus(t('Notifiche attive!'));
                   }
                   else{
-                    setPermissionStatus('Notifiche bloccate!');
+                    setPermissionStatus(t('Notifiche bloccate!'));
                   }
                 });
               }
               else{
-                setPermissionStatus('Notifiche bloccate!');
+                setPermissionStatus(t('Notifiche bloccate!'));
               }
             }
           }}
           >
             {permission === false ?
-            <span>Attiva le notifiche</span>
+            <span>{t('Attiva le notifiche')}</span>
             :
             <span>{permission }</span>
           }
             </a>
         </p>
     </div>
+  }
+  </Translation>
   )
 }
 

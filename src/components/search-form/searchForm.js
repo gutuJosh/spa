@@ -2,8 +2,10 @@ import React from "react";
 import InputField from "./inputField.js";
 import Button from "../form/button.js";
 import IndexedDb  from './../../helpers/IndexedDb.js';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class SearchForm extends React.Component {
+class SearchForm extends React.Component {
 
     constructor(props) {
       super(props);
@@ -37,6 +39,7 @@ export default class SearchForm extends React.Component {
                   categories: data.categories.sort()
                 }
             });
+            
             if(this.props.getAllLists){//pass data to parents
               this.props.getAllLists(data.liste);
             }
@@ -184,9 +187,9 @@ export default class SearchForm extends React.Component {
               <InputField 
                 name="nations" 
                 id="nationsSelector" 
-                placeholder="Seleziona la nazione"
+                placeholder={this.props.t("Seleziona la nazione")}
                 suggesstions={this.state.nations}
-                label="Tutte le nazioni"
+                label={this.props.t("Tutte le nazioni")}
                 handleInput = {this.manageInput}
                 handleSelect = {this.manageSuggestions}
                 reset={this.resetSuggesstions}
@@ -198,9 +201,9 @@ export default class SearchForm extends React.Component {
                <InputField 
                 name="categories" 
                 id="categoriesSelector" 
-                placeholder="Seleziona una categoria"
+                placeholder={this.props.t("Seleziona una categoria")}
                 suggesstions={this.state.categories}
-                label="Tutte le categorie"
+                label={this.props.t("Tutte le categorie")}
                 handleInput = {this.manageInput}
                 handleSelect = {this.manageSuggestions}
                 reset={this.resetSuggesstions}
@@ -215,6 +218,7 @@ export default class SearchForm extends React.Component {
            </div> 
           </React.Fragment>
         )
-       }
-    
+       } 
 }
+
+export default withTranslation()(SearchForm);
