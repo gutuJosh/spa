@@ -10,8 +10,10 @@ import Loader from "../components/loader/Loader.js";
 import Store from "./../helpers/Storage.js";
 import {NavLink} from "react-router-dom";
 import IndexedDb  from './../helpers/IndexedDb.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class Liste extends React.Component {
+class Liste extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +28,7 @@ export default class Liste extends React.Component {
       packDetails: null,
       showModal: {
         'active' : false,
-        'message' : "Il pacchetto è stato aggiunto al carrello con successo!",
+        'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo!"),
         'btn' : 'btn-blue',
         'btnTxt' : 'OK',
         'icn' : 'svg-ok'
@@ -34,11 +36,11 @@ export default class Liste extends React.Component {
       showModalConfirm: {
         'active' : false,
         'id': 'confirmSaveCart',
-        'message' : "Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo:",
+        'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo")+":",
         'btnOk' : 'btn-yellow',
-        'btnOkTxt' : 'Salva email',
+        'btnOkTxt' : this.props.t('Salva email'),
         'btnKo' : 'btn-blue',
-        'btnKoTxt' : 'Continua senza salvare',
+        'btnKoTxt' : this.props.t('Continua senza salvare'),
         'icn' : 'svg-ok'
       },
       where: '',
@@ -112,7 +114,7 @@ export default class Liste extends React.Component {
      if(parameters !== false && parameters.nation !== ''){
           regions = [];
           this.state.lists.forEach( (item) => {
-              if(!regions.includes(item.re) && !item.re.includes('Tutte') && item.n.toLowerCase().includes(parameters.nation) && item.pn.toLowerCase().includes(parameters.category)){
+              if(!regions.includes(item.re) && !item.re.includes(this.props.t('Tutte')) && item.n.toLowerCase().includes(parameters.nation) && item.pn.toLowerCase().includes(parameters.category)){
                      regions.push(item.re);
               }  
           });
@@ -172,14 +174,14 @@ export default class Liste extends React.Component {
         this.setState({'preloaderStatus' : 'loading', 'currentPage' : 1});
         setTimeout( () => {
           self.applySearchParameters({
-            'nation' : nation.includes('tutte')  ? '' : nation,
-            'category': categories.includes('tutte')  ? '' : categories,
+            'nation' : nation.includes(this.props.t('tutte'))  ? '' : nation,
+            'category': categories.includes(this.props.t('tutte'))  ? '' : categories,
             'region' : ''
           });
 
           Store.setSession('offlineSearch', JSON.stringify({
-            'nation' : nation.includes('tutte')  ? '' : nation, 
-            'category' : categories.includes('tutte')  ? '' : categories, 
+            'nation' : nation.includes(this.props.t('tutte'))  ? '' : nation, 
+            'category' : categories.includes(this.props.t('tutte'))  ? '' : categories, 
             'region' : ''
           }));
         }, 300);
@@ -212,7 +214,7 @@ export default class Liste extends React.Component {
         if(response.status === 'ko' && response.message === 'cart is empty'){
           let modal = {
             'active' : true,
-            'message' : "Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio.",
+            'message' : this.props.t("Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio."),
             'btn' : 'btn-yellow',
             'btnTxt' : 'OK',
             'icn' : 'svg-attention'
@@ -236,7 +238,7 @@ export default class Liste extends React.Component {
     let isInCart = false;
     let modal = {
       'active' : true,
-      'message' : "Il pacchetto è stato aggiunto al carrello con successo!",
+      'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo!"),
       'btn' : 'btn-blue',
       'btnTxt' : 'OK',
       'icn' : 'svg-ok'
@@ -245,7 +247,7 @@ export default class Liste extends React.Component {
        if(cart[i].pi === item.pi){
            modal = {
             'active' : true,
-            'message' : "Il pacchetto è gia stato aggiunto al carrello!",
+            'message' : this.props.t("Il pacchetto è gia stato aggiunto al carrello!"),
             'btn' : 'btn-yellow',
             'btnTxt' : 'OK',
             'icn' : 'svg-attention'
@@ -316,20 +318,20 @@ export default class Liste extends React.Component {
            <div className="flex-grid">
             <div className="flex-lg-12 flex-md-12 flex-sm-12">
               <h2 className="text-white mtop0">
-                Crea il tuo database email B2B 
+                {this.props.t('Crea il tuo database email B2B')} 
               </h2>
               <p className="text-white">
-              Oltre 8.000.000 aziende nel mondo. Acquista anagrafiche aziendali sempre comprensive degli indirizzi email.
+              {this.props.t('Oltre')} 8.000.000 {this.props.t('aziende nel mondo.')} {this.props.t('Acquista anagrafiche aziendali sempre comprensive degli indirizzi email.')}
               </p>
               <p className="text-white">
-              Seleziona una categoria e/o una locazione geografica per visualizzare subito tutti i pacchetti disponibili. 
+              {this.props.t('Seleziona una categoria e/o una locazione geografica per visualizzare subito tutti i pacchetti disponibili.')} 
               </p>
               <p className="alert alert-green small pointer pad5">
                 <span style={{fontSize:'20px',marginRight:'5px'}}className="close f-right pe-7s-close" onClick={ (e) => {
                 e.target.parentNode.classList.add('hide');
               }}>&nbsp;
                 </span>
-                Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!
+                {this.props.t('Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}
                </p>
             </div>
            </div>
@@ -348,9 +350,9 @@ export default class Liste extends React.Component {
             {this.state.lists !== null && (
               <React.Fragment>
               {this.state.filteredResults.length === 1 ?
-                  <h3>{this.state.filteredResults.length}  pacchetto trovato <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
+                  <h3>{this.state.filteredResults.length}  {this.props.t('pacchetto trovato')} <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
                   :
-                  <h3>{this.state.filteredResults.length > 0 ?  this.state.filteredResults.length +' pacchetti trovati' : ''} <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
+                  <h3>{this.state.filteredResults.length > 0 ?  this.state.filteredResults.length +' '+this.props.t('pacchetti trovati') : ''} <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
               }
               </React.Fragment>
               )}   
@@ -395,7 +397,7 @@ export default class Liste extends React.Component {
               <div className="flex-lg-12 flex-md-12 flex-sm-12 center">
                 <i className="svg svg-small svg-chi-siamo"></i>
                 <br/>
-                 <h4>Ci dispiace. Nessun risultato trovato! Riprova con altri parametri.</h4>
+                 <h4>{this.props.t('Ci dispiace. Nessun risultato trovato! Riprova con altri parametri.')}</h4>
               </div>
             )}
             </React.Fragment>
@@ -413,10 +415,9 @@ export default class Liste extends React.Component {
            </div>
            <div className="center">
              <p>
-               Quotazioni dettagliate e profilazioni ancora più specifiche (es. natura giuridica, province, classi di fatturato, numero dipendenti, etc.) 
-               si possono ottenere richiedendo un preventivo personalizzato e gratuito. 
+             {this.props.t('Quotazioni dettagliate e profilazioni ancora più specifiche (es. natura giuridica, province, classi di fatturato, numero dipendenti, etc.) si possono ottenere richiedendo un preventivo personalizzato e gratuito.')} 
               </p>
-              <NavLink to="/richiesta-preventivo" title="Preventivi" className="btn btn-yellow">Richiedi un preventivo</NavLink>
+              <NavLink to="/richiesta-preventivo" title={this.props.t("Preventivi")} className="btn btn-yellow">{this.props.t('Richiedi un preventivo')}</NavLink>
            </div>
            <div className="mtop50">&nbsp;</div>
          </div>
@@ -434,3 +435,4 @@ export default class Liste extends React.Component {
     )}
 }
 
+export default withTranslation()(Liste);

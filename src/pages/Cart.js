@@ -4,8 +4,10 @@ import CartItem from "../components/cart/CartItem.js";
 import CartSummary from "../components/cart/CartSummary.js";
 import BackBtn from "../components/back-button/BackBtn.js";
 import IndexedDb  from './../helpers/IndexedDb.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class Cart extends React.Component{
+class Cart extends React.Component{
 
   constructor(props) {
     super(props);
@@ -77,10 +79,10 @@ export default class Cart extends React.Component{
            <div className="flex-grid">
             <div className="flex-lg-12 flex-md-12 flex-sm-12">
               <h1 className="text-white">
-                <i className="cart-icn"></i> Il tuo carrello
+                <i className="cart-icn"></i> {this.props.t('Il tuo carrello')}
               </h1>
               {(this.state.items.length > 0 && this.state.checkout === 'open') &&
-              <p className="text-white">Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!</p>
+              <p className="text-white">{this.props.t('Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
                }
             </div>
           </div>
@@ -103,8 +105,8 @@ export default class Cart extends React.Component{
             </ul>
             :
             <div className="center p10">
-               <p>Il tuo carrello è vuoto: inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!</p>
-               <NavLink to="/liste-email" className="btn btn-yellow"><i className="pe-7s-angle-left"></i> Vai alla Ricerca</NavLink>
+               <p>{this.props.t('Il tuo carrello è vuoto: inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
+               <NavLink to="/liste-email" className="btn btn-yellow"><i className="pe-7s-angle-left"></i> {this.props.t('Vai alla Ricerca')}</NavLink>
             </div>
             }
           </div>
@@ -114,9 +116,9 @@ export default class Cart extends React.Component{
            {this.state.items.length > 0 && (
             <React.Fragment>
               {this.state.checkout === 'open' ?
-               <p className="small mbottom0">Appena concluso il ordine, il tuo database sarà pronto entro 3 giorni lavorativi, ma di solito ci bastano 24 ore.</p>
+               <p className="small mbottom0">{this.props.t('Appena concluso il ordine, il tuo database sarà pronto entro 3 giorni lavorativi, ma di solito ci bastano 24 ore.')}</p>
                :
-               <p className="small alert alert-red pad5">Non è possibile completare l'aquisto: hai già un ordine in attesa! Appena ritornerai online, riceverai un promemoria anche di questo carrello.</p>
+               <p className="small alert alert-red pad5">{this.props.t('Non è possibile completare l\'aquisto')}: {this.props.t('hai già un ordine in attesa! Appena ritornerai online, riceverai un promemoria anche di questo carrello.')}</p>
               }
             </React.Fragment>
             )}
@@ -133,4 +135,4 @@ export default class Cart extends React.Component{
   }
 
 }
-
+export default withTranslation()(Cart);

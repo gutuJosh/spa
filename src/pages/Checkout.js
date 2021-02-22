@@ -14,6 +14,9 @@ import OrderSavedMessage from "../components/checkout/OrderSavedMessage.js";
 import Modal from "../components/modal/Modal.js";
 import IndexedDb from './../helpers/IndexedDb.js';
 import StoreFormData from './../helpers/storeFormData.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
+
 
 
 const formData = {
@@ -38,7 +41,7 @@ const formData = {
 const form = new StoreFormData('checkoutForm');
 var formFileds = form.getData();
 
-export default class Checkout extends React.Component{
+class Checkout extends React.Component{
 
     constructor(props) {
       super(props);
@@ -46,7 +49,7 @@ export default class Checkout extends React.Component{
          invoiceCountry : false,
          showModal: {
           'active' : false,
-          'message' : "Impossibile salvare il form per l'invio: controlla i campi evidenziati in rosso!",
+          'message' : this.props.t("Impossibile salvare il form per l'invio: controlla i campi evidenziati in rosso!"),
           'btn' : 'btn-red',
           'btnTxt' : 'OK',
           'icn' : 'svg-nope'
@@ -358,7 +361,7 @@ export default class Checkout extends React.Component{
              <div className="wrapper">
               <div className="flex-grid">
                 <div className="flex-lg-12 flex-md-12 flex-sm-12">
-                 <h1 className="text-white">Concludi l'ordine</h1>
+                 <h1 className="text-white">{this.props.t('Concludi l\'ordine')}</h1>
                 </div>
                 </div>
                 <div className="flex-grid page-header mtop10">
@@ -379,12 +382,12 @@ export default class Checkout extends React.Component{
                 </div>
                 <form className="form form-big flex-grid checkout-form mtop20" ref="checkoutForm" onSubmit={this.saveData}>
                  <div className="flex-lg-4 flex-md-4 flex-sm-12">
-                   <h3>Dati anagrafici:</h3>
+                   <h3>{this.props.t('Dati anagrafici')}:</h3>
                   <Input 
                    name="ragione_sociale" 
-                   placeholder="es. Progetti Industriali di Mario Bianchi" 
-                   label="Ragione sociale"
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("es. Progetti Industriali di Mario Bianchi")} 
+                   label={this.props.t("Ragione sociale")}
+                   required={this.props.t("Campo obbligatorio")}
                    defaultValue={this.state.formData.ragione_sociale}
                    inputRef={el => (this.ragioneSociale = el)}
                    getValue={ (element)=>{
@@ -393,9 +396,9 @@ export default class Checkout extends React.Component{
                    /> 
                    <Input 
                    name="nome_contatto" 
-                   placeholder="es. Mario Bianchi" 
-                   label="Nome contatto" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("es. Mario Bianchi")} 
+                   label={this.props.t("Nome contatto")}
+                   required={this.props.t("Campo obbligatorio")}
                    defaultValue={this.state.formData.nome_contatto}
                    inputRef={el => (this.nomeContatto = el)}
                    getValue={ (element)=>{
@@ -404,9 +407,9 @@ export default class Checkout extends React.Component{
                    /> 
                    <Input 
                    name="indirizzo" 
-                   placeholder="via, numero civico" 
-                   label="Indirizzo" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("via, numero civico")} 
+                   label={this.props.t("Indirizzo")}
+                   required={this.props.t("Campo obbligatorio")}
                    defaultValue={this.state.formData.indirizzo}
                    inputRef={el => (this.indirizzo = el)}
                    getValue={ (element)=>{
@@ -416,8 +419,8 @@ export default class Checkout extends React.Component{
                    <Input 
                    name="cap" 
                    placeholder="numerico" 
-                   label="Codice postale(CAP)" 
-                   required="Campo obbligatorio"
+                   label={this.props.t("Codice postale(CAP)")} 
+                   required={this.props.t("Campo obbligatorio")}
                    defaultValue={this.state.formData.cap}
                    inputRef={el => (this.cap = el)}
                    getValue={ (element)=>{
@@ -426,9 +429,9 @@ export default class Checkout extends React.Component{
                    /> 
                   <Input 
                    name="citta" 
-                   placeholder="es. Genova" 
-                   label="Città" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("es. Genova")} 
+                   label={this.props.t("Città")}
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.citta = el)}
                    defaultValue={this.state.formData.citta}
                    getValue={ (element)=>{
@@ -437,9 +440,9 @@ export default class Checkout extends React.Component{
                    /> 
                    <Select 
                    name="nazione"
-                   label="Seleziona la nazione"
+                   label={this.props.t("Seleziona la nazione")}
                    values={Nations}
-                   required="Campo obbligatorio" 
+                   required={this.props.t("Campo obbligatorio")} 
                    inputRef={el => (this.nazione = el)}
                    defaultValue={this.state.formData.nazione}
                    handleChange={ (value)=>{
@@ -448,8 +451,8 @@ export default class Checkout extends React.Component{
                    />
                    <Input 
                    name="telefono" 
-                   placeholder="fisso o mobile" 
-                   label="Telefono" 
+                   placeholder={this.props.t("fisso o mobile")} 
+                   label={this.props.t("Telefono")} 
                    inputRef={el => (this.telefono = el)}
                    defaultValue={this.state.formData.telefono}
                    getValue={ (element)=>{
@@ -458,7 +461,7 @@ export default class Checkout extends React.Component{
                    /> 
                   <Input 
                    name="fax" 
-                   placeholder="numero di fax" 
+                   placeholder={this.props.t("numero di fax")} 
                    label="Fax" 
                    inputRef={el => (this.fax = el)}
                    defaultValue={this.state.formData.fax}
@@ -469,8 +472,8 @@ export default class Checkout extends React.Component{
                    <Input 
                    name="email_principale" 
                    placeholder="mario.bianchi@mail.com" 
-                   label="Indirizzo email" 
-                   required="Campo obbligatorio"
+                   label={this.props.t("Indirizzo email")} 
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.emailPrincipale = el)}
                    defaultValue={this.state.formData.email_principale}
                    getValue={ (element)=>{
@@ -480,8 +483,8 @@ export default class Checkout extends React.Component{
                   <Input 
                    name="email_principale2" 
                    placeholder="mario.bianchi@mail.com" 
-                   label="Ripeti email" 
-                   required="Campo obbligatorio"
+                   label={this.props.t("Ripeti email")} 
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.emailPrincipale2 = el)}
                    defaultValue={this.state.formData.email_principale2}
                    getValue={ (element)=>{
@@ -495,13 +498,13 @@ export default class Checkout extends React.Component{
                     <span className="ttip-large" data-ttip="Risparmia tempo: usa i dati anagrafici per la fatturazione">
                     <Switcher id="sw2" type="nblue" handleSwitcher={this.copyData}/>
                    </span>
-                    &nbsp;&nbsp;Dati di fatturazione:
+                    &nbsp;&nbsp;{this.props.t("Dati di fatturazione")}:
                    </h3>
                   <Input 
                    name="F_ragione_sociale" 
-                   placeholder="es. Progetti Industriali di Mario Bianchi" 
-                   label="Ragione sociale" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("es. Progetti Industriali di Mario Bianchi")} 
+                   label={this.props.t("Ragione sociale")}
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.ragioneSocialeF = el)}
                    defaultValue={this.state.formData.F_ragione_sociale}
                    getValue={ (element)=>{
@@ -510,9 +513,9 @@ export default class Checkout extends React.Component{
                    /> 
                   <Input 
                    name="F_indirizzo" 
-                   placeholder="via, numero civico" 
-                   label="Indirizzo" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("via, numero civico")} 
+                   label={this.props.t("Indirizzo")}
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.indirizzoF = el)}
                    defaultValue={this.state.formData.F_indirizzo}
                    getValue={ (element)=>{
@@ -521,9 +524,9 @@ export default class Checkout extends React.Component{
                    /> 
                    <Input 
                    name="F_cap" 
-                   placeholder="numerico" 
-                   label="Codice postale(CAP)" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("numerico")} 
+                   label={this.props.t("Codice postale(CAP)")} 
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.capF = el)}
                    defaultValue={this.state.formData.F_cap}
                    getValue={ (element)=>{
@@ -532,9 +535,9 @@ export default class Checkout extends React.Component{
                    /> 
                   <Input 
                    name="F_citta" 
-                   placeholder="es. Genova" 
-                   label="Città" 
-                   required="Campo obbligatorio"
+                   placeholder={this.props.t("es. Genova")} 
+                   label={this.props.t("Città")} 
+                   required={this.props.t("Campo obbligatorio")}
                    inputRef={el => (this.cittaF = el)}
                    defaultValue={this.state.formData.F_citta}
                    getValue={ (element)=>{
@@ -543,8 +546,8 @@ export default class Checkout extends React.Component{
                    /> 
                    <Select 
                    name="F_nazione"
-                   label="Seleziona la nazione"
-                   required="Campo obbligatorio"
+                   label={this.props.t("Seleziona la nazione")}
+                   required={this.props.t("Campo obbligatorio")}
                    values={Nations}
                    inputRef={el => (this.nazioneF = el)}
                    defaultValue={this.state.formData.F_nazione}
@@ -554,8 +557,8 @@ export default class Checkout extends React.Component{
                    />
                    <TextArea 
                    name="note"
-                   label="Note"
-                   placeholder="Max. 255 cartteri"
+                   label={this.props.t("Note")}
+                   placeholder={this.props.t("Max. 255 cartteri")}
                    maxlength="255"
                    inputRef={el => (this.note = el)}
                    defaultValue={this.state.formData.note}
@@ -565,7 +568,7 @@ export default class Checkout extends React.Component{
                    />
                  </div>
                  <div className="flex-lg-4 flex-md-4 flex-sm-12">
-                  <h3>Metodo di pagamento:</h3>
+                  <h3>{this.props.t('Metodo di pagamento')}:</h3>
                   <OrderSummary 
                    items={this.state.cart} 
                    invoiceCountry={this.state.invoiceCountry}
@@ -573,19 +576,19 @@ export default class Checkout extends React.Component{
       
                   <div className="cont mtop10 alert alert-yellow">
                    <p className="small pad5">
-                     Hai un coupon o uno sconto riservato? 
-                     Potrai aggiungerlo in modalità online prima di concludere il tuo ordine.
+                   {this.props.t('Hai un coupon o uno sconto riservato?')} 
+                     {this.props.t('Potrai aggiungerlo in modalità online prima di concludere il tuo ordine.')}
                    </p>
                   </div>
                  
-                   <h4 className="mtop20">Seleziona modalità di pagamento:</h4>
-                   <p className="small">Potrai effettuare il pagamento una volta ripristinata la connessione.</p>
+                   <h4 className="mtop20">{this.props.t('Seleziona modalità di pagamento')}:</h4>
+                   <p className="small">{this.props.t('Potrai effettuare il pagamento una volta ripristinata la connessione.')}</p>
                    <hr/>
                    <div className="cont pad10">
                      <RadioBtn 
                       name="payment"  
                       id="pay1" 
-                      label="Carta di credito (Banca Sella)"  
+                      label={this.props.t("Carta di credito (Banca Sella)")} 
                       inputRef={el => (this.paymentBS = el)}
                       value="BS"
                       isChecked={this.state.formData.payment === 'BS' ? true : false}
@@ -598,7 +601,7 @@ export default class Checkout extends React.Component{
                      <RadioBtn 
                       name="payment"  
                       id="pay2" 
-                      label="PayPal (e carte accettate)" 
+                      label={this.props.t("PayPal (e carte accettate)")} 
                       inputRef={el => (this.paymentPP = el)}
                       value="PP"
                       isChecked={this.state.formData.payment === 'PP' ? true : false}
@@ -611,7 +614,7 @@ export default class Checkout extends React.Component{
                      <RadioBtn 
                        name="payment"  
                        id="pay3" 
-                       label="Bonifico bancario" 
+                       label={this.props.t("Bonifico bancario")}
                        inputRef={el => (this.paymentBC = el)}
                        value="BB"
                        isChecked={this.state.formData.payment === 'BB' ? true : false}
@@ -624,15 +627,15 @@ export default class Checkout extends React.Component{
 
                   <div className="cont pad10">
                    <Checkbox id="privacy-prev" inputRef={el => (this.privacyPrev = el)}>
-                    Accetto la  <a href="/" className="text-blue" onClick={(e) => {
+                   {this.props.t('Accetto la')}  <a href="/" className="text-blue" onClick={(e) => {
                       e.preventDefault();
                       this.props.history.push('/about/privacy-policy');
-                    }}>normativa</a> della privacy*
+                    }}>{this.props.t('normativa')}</a> {this.props.t('della privacy')}*
                    </Checkbox>
                   </div>
                   <div className="cont mtop20">
                     <Button type="btn-blue full center">
-                      SALVA
+                    {this.props.t('SALVA')}
                     </Button>
                   </div>
                  </div>
@@ -658,7 +661,5 @@ export default class Checkout extends React.Component{
         )
 
     }
-
-
-
 }
+export default withTranslation()(Checkout);

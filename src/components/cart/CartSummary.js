@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import { totalPrice, totalDiscount, finalPrice } from "./../../helpers/ShoppingCart.js";
+
 function CartSummary(props) {
 
    
