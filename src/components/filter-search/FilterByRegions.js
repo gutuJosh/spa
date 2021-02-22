@@ -1,6 +1,4 @@
 import React from "react";
-import { Translation } from 'react-i18next';
-
 export default class FilterByRegion extends React.Component {
 
     constructor(props) {
@@ -98,7 +96,7 @@ export default class FilterByRegion extends React.Component {
 
     render(){
         return(
-        <Translation>{(t, { i18n }) =>  
+    
           <form className="filter-search-form" method="post" action="/" ref="filterSearchForm">
               {this.state.regions.length > 1 && (
               <div className="flex-item auto">
@@ -109,7 +107,7 @@ export default class FilterByRegion extends React.Component {
                      value={this.state.val}
                      name="regions"
                      id="regionsSelector"
-                     placeholder={t("Seleziona la regione")}
+                     placeholder="Seleziona la regione"
                      type="text" 
                      onFocus={(event) => {
                        event.target.parentNode.classList.add('focus');
@@ -142,18 +140,17 @@ export default class FilterByRegion extends React.Component {
                  )}  
                   <li data-value="all" onClick={ (event) => {
                      event.preventDefault();
-                     this.setValue(t('Tutte le regioni'));
+                     this.setValue('Tutte le regioni');
                      this.resetSuggesstions();
                     }}>
-                   {t('Tutte le regioni')}
+                  Tutte le region
                  </li>   
                 </ul>
                </div> 
              </div>
              )}
           </form>
-          }
-        </Translation>
+
         )
     }
 }

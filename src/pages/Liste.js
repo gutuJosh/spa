@@ -435,4 +435,4 @@ class Liste extends React.Component {
     )}
 }
 
-export default withTranslation()(Liste);
+export default  withTranslation()(Liste);

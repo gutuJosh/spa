@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import "../../config/i18n.js";
-import { withTranslation } from "react-i18next";
+
 
 const InputField = (props) => {
 
@@ -51,13 +50,9 @@ const InputField = (props) => {
                   setValue(item);
                   props.handleSelect(props.name, item);
                  }}>
-	               {props.name === 'nations' ? 
-                 <React.Fragment>
-                 {props.t(`nations:${item}`)}
-                 </React.Fragment>
-                 : 
-                 props.t(`categories:${item}`)
-                 }
+	               
+                 {item}
+                
                 </li> 
                 )
                }) 
@@ -78,5 +73,5 @@ const InputField = (props) => {
   
   };
 
-  export default  withTranslation()(InputField);
+  export default InputField;
   
