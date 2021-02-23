@@ -33,10 +33,11 @@ const PrivacyPolicy = (props) => {
             <p>{props.t('Raccogliamo le informazioni fornite volontariamente dal momento della creazione del tuo account, quando acquisti prodotti o servizi ad es. nome azienda, contatto di riferimento, indirizzo, indirizzo email e numero di telefono.')}</p>
             <p>{props.t('Registriamo inoltre le informazioni quando ci contatti telefonicamente o tramite chat, comprese le richieste di assistenza o preventivo e le note o i dettagli che spiegano che cosa hai richiesto e come abbiamo risposto.')}</p>
             <p>{props.t('Il mancato conferimento dei dati comporterà l’impossibilità per Neosoft di dar corso agli impegni contrattuali assunti o alle richieste dell’utente.')}</p>
-            <p>{props.t('Utilizziamo anche cookie e tecnologie simili sui nostri siti web e applicazioni mobile per raccogliere informazioni sulle interazioni e l’utilizzo. Consulta la Policy sui Cookie per ulteriori dettagli sulla tipologia specifica di informazioni che possiamo raccogliere e sulle tue scelte in relazione a questi dati.')}</p>
-
+            <p>
+              {props.t('Utilizziamo anche cookie e tecnologie simili sui nostri siti web e applicazioni mobile per raccogliere informazioni sulle interazioni e l’utilizzo.')}&nbsp;
+              {props.t('Consulta la Policy sui Cookie per ulteriori dettagli sulla tipologia specifica di informazioni che possiamo raccogliere e sulle tue scelte in relazione a questi dati.')}
+           </p>
             <hr/>
-
             <h3 className="mtop20">{props.t('In che modo utilizziamo le informazioni raccolte?')}</h3>
             <p>
                 {props.t('I dati forniti dall’utente sono raccolti e trattati per le seguenti finalità')}:
@@ -58,7 +59,10 @@ const PrivacyPolicy = (props) => {
             <h3 className="mtop20">{props.t('Quali soggetti sono autorizzati al trattamento dei tuoi dati? I tuoi dati vengono condivisi con terzi?')}</h3>
             <p>{props.t('Il trattamento dei dati raccolti è effettuato da personale interno di Neosoft autorizzato al trattamento secondo specifiche istruzioni impartite nel rispetto della normativa vigente.')}</p>
             <p>{props.t('I tuoi dati non saranno mai ceduti a terzi, né inseriti nel Database Bancomail, a meno che non siano stati conferiti spontaneamente su questo sito nell’apposita form Fanne Parte (sezione Supporto) o acquisite attraverso altre fonti autorizzate, in ogni caso previa comunicazione.')}</p>
-            <p>{props.t('Tuttavia, è possibile che alcuni tuoi dati vengano condivisi da noi con fornitori fidati, necessari per offrire servizio per nostro conto come comunicazione tramite email e annunci pubblicitari basati sugli interessi. Condividiamo solo le informazioni minime necessarie e non è consentito a soggetti terzi di utilizzare le tue informazioni per scopi diversi da quelli indicati nella nostra Policy sulla privacy.')} {props.t('In ogni caso, i dati non saranno mai diffusi.')}</p>
+            <p>
+              {props.t('Tuttavia, è possibile che alcuni tuoi dati vengano condivisi da noi con fornitori fidati, necessari per offrire servizio per nostro conto come comunicazione tramite email e annunci pubblicitari basati sugli interessi.')}&nbsp;
+              {props.t('Condividiamo solo le informazioni minime necessarie e non è consentito a soggetti terzi di utilizzare le tue informazioni per scopi diversi da quelli indicati nella nostra Policy sulla privacy.')}&nbsp;
+              {props.t('In ogni caso, i dati non saranno mai diffusi.')}</p>
          
             <hr/>
 

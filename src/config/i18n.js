@@ -3,13 +3,15 @@ import detector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import translationEN from "../locales/en/common.json";
 import homeEN from "../locales/en/home.json";
+import aboutEN from "../locales/en/about.json";
 import translationIT from "../locales/it/common.json";
 
 // the translations
 const resources = {
   en: {
     common: translationEN,
-    home: homeEN
+    home: homeEN,
+    about: aboutEN
   },
   it: {
     common: translationIT

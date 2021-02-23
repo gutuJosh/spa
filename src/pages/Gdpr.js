@@ -41,7 +41,9 @@ const Gdpr = (props) => {
 					{props.t('This Regulation')} <strong className="underlined">{props.t('does not cover')}</strong> {props.t('the processing of personal data which concerns')} <strong className="underlined">{props.t('legal persons')}</strong> {props.t('and in particular undertakings established as legal persons,')}' <strong className="underlined">{props.t('including the name and the form of the legal person and the contact details of the legal person')}</strong>.
 				 </p>
                 </div>
-                <p className="mtop10">{props.t('Tuttavia, per deontologia e maggior garanzia, le nostre procedure - sebbene questa esclusione dalla tutela dal trattamento fosse già compresa nella revisione della 196/03 (decreto Monti “Salva Italia”) - assicuriamo da sempre anche a questi Soggetti i Diritti Universali (informazione, verifica, aggiornamento e rimozione). Continueremo a farlo anche con il GDPR.')}</p>
+                <p className="mtop10">
+                  {props.t('Tuttavia, per deontologia e maggior garanzia, le nostre procedure - sebbene questa esclusione dalla tutela dal trattamento fosse già compresa nella revisione della 196/03 (decreto Monti “Salva Italia”) - assicuriamo da sempre anche a questi Soggetti i Diritti Universali (informazione, verifica, aggiornamento e rimozione).')}&nbsp;
+                  {props.t('Continueremo a farlo anche con il GDPR.')}</p>
                 <p>{props.t('Nella stessa ottica virtuosa e strategica, consigliamo ai nostri clienti di usare lo stesso tipo di approccio, assicurando ai destinatari informazione e diritti.')}</p>
             </List>
             <p className="mtop20">&nbsp;</p>
@@ -87,11 +89,17 @@ const Gdpr = (props) => {
              <p>{props.t('Questo documento tiene conto di un “balance test” oggettivo, per la verifica che gli interessi individuali non prevarichino il nostro.')}</p>
             </List>
             <List type="skyblue" number="3"> 
-             <p><strong>Traking:</strong> {props.t('sin dalla nascita di Bancomail, abbiamo creato routine per tracciare i dati che cediamo. Ogni singolo record contiene tutti i dati sul reperimento (data, fonte, etc) e i riferimenti (nominativo e temporale) di coloro a cui lo abbiamo fornito.')}</p>
+             <p>
+              <strong>Traking:</strong> {props.t('sin dalla nascita di Bancomail, abbiamo creato routine per tracciare i dati che cediamo.')}&nbsp;
+              {props.t('Ogni singolo record contiene tutti i dati sul reperimento (data, fonte, etc) e i riferimenti (nominativo e temporale) di coloro a cui lo abbiamo fornito.')}
+            </p>
              <p>{props.t('Questo approccio è molto importante al fine di una piena compatibilità con il Regolamento.')}</p>
             </List>
             <List type="skyblue" number="4"> 
-             <p><strong>ISO 27001:</strong> {props.t('anche se non strettamente correlato al Regolamento, la nostra società si sta dotando della Certificazione ISO 27001 per la gestione della sicurezza delle informazioni. Sempre in quest’ottica i nostri sistemi sono all’avanguardia da anni, applicando tecnologie avanzate di protezione dei dati.')}</p>
+             <p>
+              <strong>ISO 27001:</strong> {props.t('anche se non strettamente correlato al Regolamento, la nostra società si sta dotando della Certificazione ISO 27001 per la gestione della sicurezza delle informazioni.')}&nbsp;
+              {props.t('Sempre in quest’ottica i nostri sistemi sono all’avanguardia da anni, applicando tecnologie avanzate di protezione dei dati.')}
+            </p>
             </List>
             <h3 className="mtop20">{props.t('Quindi?')}</h3>
             <p>

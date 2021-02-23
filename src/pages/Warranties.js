@@ -5,7 +5,7 @@ import List from "../components/ordered-list/List.js";
 import "../config/i18n.js";
 import { withTranslation } from "react-i18next";
 
-const Garanzie = (props) => {
+const Warranties = (props) => {
   return(
        <React.Fragment>
         <section className="section screen-blue">
@@ -35,8 +35,14 @@ const Garanzie = (props) => {
             <List type="skyblue" number="2">  
                 <h3>{props.t('Precisione dei Dati')}</h3>
             </List>
-            <p className="mtop20">{props.t('Giornalmente il database viene controllato ed aggiornato da un reparto dedicato. Ogni dato relativo ai diversi campi (e-mail, indirizzo, telefono, fax, cap, etc.) passa attraverso 21 differenti processi di refilazione, normalizzazione e standardizzazione al fine di garantire dati unici, aggiornati e coerenti.')}</p>
-            <p>{props.t('Il dato email viene testato periodicamente dal nostro personale.')} {props.t('La verifica avviene attraverso controlli software incrociati atti a garantire sia l\'esistenza dell\'indirizzo (unknown user, Not In DSN, etc.) sia la sua funzionalità (over quota, spamcop etc).')}</p>
+            <p className="mtop20">
+              {props.t('Giornalmente il database viene controllato ed aggiornato da un reparto dedicato.')}&nbsp;
+              {props.t('Ogni dato relativo ai diversi campi (e-mail, indirizzo, telefono, fax, cap, etc.) passa attraverso 21 differenti processi di refilazione, normalizzazione e standardizzazione al fine di garantire dati unici, aggiornati e coerenti.')}
+            </p>
+            <p>
+              {props.t('Il dato email viene testato periodicamente dal nostro personale.')}&nbsp;
+              {props.t('La verifica avviene attraverso controlli software incrociati atti a garantire sia l\'esistenza dell\'indirizzo (unknown user, Not In DSN, etc.) sia la sua funzionalità (over quota, spamcop etc).')}
+            </p>
             <p>{props.t('Ci impegniamo a rimborsare tutti gli indirizzi e-mail che, nell\'arco di 60 giorni dalla fornitura, si rivelassero malfunzionanti o cessati.')}</p>
             <h4 className="mtop20">{props.t('Come funziona il rimborso dei bounce?')}</h4>
             <p>{props.t('Nessuna scusa')}: {props.t('se è un hard bounce, il risarcimento è garantito.')} {props.t('Stabilita l\'entità degli indirizzi invalidi, potrai scegliere la modalità di rimborso preferita tra:')}</p>
@@ -54,8 +60,8 @@ const Garanzie = (props) => {
                 <h3>{props.t('Professionalità')}</h3>
             </List>
             <p className="mtop20">
-            {props.t('Nessun disco o voce registrata')}: {props.t('un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, anche post vendita, per qualsiasi necessità: dall’importazione alla gestione del pacchetto.')}
-                {props.t('Rispondiamo alle vostre richieste entro un massimo di 48 ore.')}
+             {props.t('Nessun disco o voce registrata')}: {props.t('un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, anche post vendita, per qualsiasi necessità: dall’importazione alla gestione del pacchetto.')}&nbsp;
+              {props.t('Rispondiamo alle vostre richieste entro un massimo di 48 ore.')}
             </p>
           </div>
         
@@ -80,4 +86,4 @@ const Garanzie = (props) => {
   )
 }
 
-export default withTranslation()(Garanzie);
+export default withTranslation()(Warranties);

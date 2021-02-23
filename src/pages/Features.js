@@ -36,7 +36,7 @@ const Features = (props) => {
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="2">  
                 <h4 className="text-skyblue">{props.t('Validazione e verifica')}</h4>
-                <p>{props.t('Giornalmente il database viene controllato ed aggiornato da un reparto dedicato. Ogni dato relativo ai diversi campi (e-mail, indirizzo, telefono, fax, cap, etc.) passa attraverso 21 differenti processi di refilazione, normalizzazione e standardizzazione al fine di garantire dati unici, aggiornati e coerenti.')}</p>
+                <p>{props.t('Giornalmente il database viene controllato ed aggiornato da un reparto dedicato.')} {props.t('Ogni dato relativo ai diversi campi (e-mail, indirizzo, telefono, fax, cap, etc.) passa attraverso 21 differenti processi di refilazione, normalizzazione e standardizzazione al fine di garantire dati unici, aggiornati e coerenti.')}</p>
                 <p className="small">
                  <i className="pe-7s-check"></i> {props.t('Deduplicazione')}&nbsp; 
                  <i className="pe-7s-check"></i> {props.t('Test DNS Validazione')}&nbsp; 
@@ -70,7 +70,10 @@ const Features = (props) => {
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="5">  
                 <h4 className="text-skyblue">{props.t('Dati integrati')}</h4>
-                <p>{props.t('Ogni record è contraddistinto da una classificazione aziendale profonda che comprende anche il volume di fatturato, la forma sociale, il numero di dipendenti e altre caratteristiche tipiche (ad esempio le stelle per gli alberghi). Le partite IVA sono normalizzate secondo i registri nazionali e locali (EU VAT numbers, USA EIN TIN, India Bin, ecc.) e su richiesta sono disponibili i principali profili social delle aziende.')}</p>
+                <p>
+                 {props.t('Ogni record è contraddistinto da una classificazione aziendale profonda che comprende anche il volume di fatturato, la forma sociale, il numero di dipendenti e altre caratteristiche tipiche (ad esempio le stelle per gli alberghi).')}&nbsp;
+                 {props.t('Le partite IVA sono normalizzate secondo i registri nazionali e locali (EU VAT numbers, USA EIN TIN, India Bin, ecc.) e su richiesta sono disponibili i principali profili social delle aziende.')}
+                </p>
                 <p className="small">
                  <i className="pe-7s-check"></i> {props.t('Integrazione Dati economici')}&nbsp; 
                  <i className="pe-7s-check"></i> {props.t('Integrazione Social')}&nbsp; 
@@ -80,7 +83,10 @@ const Features = (props) => {
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="6">  
                 <h4 className="text-skyblue">{props.t('Conformità Normativa e GDPR')}</h4>
-                <p>{props.t('I dati forniti da Bancomail sono reperiti, trattati e gestiti in piena conformità alle leggi nazionali comunitarie e sulla Protezione dei Dati (GDPR).')} {props.t('I diritti dell\'interessato all’aggiornamento, rettifica e cancellazione, vengono rigorosamente rispettati e ne viene fornito riscontro con estrema rapidità - così come previsto dalle regolamentazioni vigenti. Dopo la prima informativa inoltre, inviamo periodicamente una notifica sul trattamento dei dati e sul loro aggiornamento in modo da garantire un database aggiornato ed in linea con i principi della Protezione dei Dati.')}</p>
+                <p>
+                  {props.t('I dati forniti da Bancomail sono reperiti, trattati e gestiti in piena conformità alle leggi nazionali comunitarie e sulla Protezione dei Dati (GDPR).')} {props.t('I diritti dell\'interessato all’aggiornamento, rettifica e cancellazione, vengono rigorosamente rispettati e ne viene fornito riscontro con estrema rapidità - così come previsto dalle regolamentazioni vigenti.')}&nbsp;
+                  {props.t('Dopo la prima informativa inoltre, inviamo periodicamente una notifica sul trattamento dei dati e sul loro aggiornamento in modo da garantire un database aggiornato ed in linea con i principi della Protezione dei Dati.')}
+                </p>
                 <p className="small">
                  <i className="pe-7s-check"></i> {props.t('Dati reperiti secondo le normative')}&nbsp; 
                  <i className="pe-7s-check"></i> {props.t('Dati verificabili e gestibili da tutti gli interessati')}&nbsp; 
@@ -91,7 +97,11 @@ const Features = (props) => {
             <p className="mtop20">&nbsp;</p>
             <List type="skyblue" number="7">  
                 <h4 className="text-skyblue">{props.t('Supporto e garanzie')}</h4>
-                <p>{props.t('Eventuali indirizzi non funzionanti sono rimborsati con uno storno o un coupon. Nessun disco o voce registrata')}: {props.t('un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, dal pre al post vendita, per qualsiasi necessità')}: {props.t('dall’importazione alla gestione del pacchetto.')}</p>
+                <p>
+                  {props.t('Eventuali indirizzi non funzionanti sono rimborsati con uno storno o un coupon.')}&nbsp;
+                  {props.t('Nessun disco o voce registrata')}: {props.t('un nostro operatore in carne e ossa è sempre a tua disposizione per fornirti assistenza gratuita, dal pre al post vendita, per qualsiasi necessità')}:&nbsp;
+                  {props.t('dall’importazione alla gestione del pacchetto.')}
+                  </p>
                 <p className="small">
                  <i className="pe-7s-check"></i> {props.t('Sostituzione garantita per eventuali indirizzi invalidi')}&nbsp; 
                  <i className="pe-7s-check"></i> {props.t('Assistenza pre e post vendita')}&nbsp; 

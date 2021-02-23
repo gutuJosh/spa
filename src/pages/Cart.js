@@ -105,7 +105,7 @@ class Cart extends React.Component{
             </ul>
             :
             <div className="center p10">
-               <p>{this.props.t('Il tuo carrello è vuoto: inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
+               <p>{this.props.t('Il tuo carrello è vuoto')}: {this.props.t('Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
                <NavLink to="/liste-email" className="btn btn-yellow"><i className="pe-7s-angle-left"></i> {this.props.t('Vai alla Ricerca')}</NavLink>
             </div>
             }

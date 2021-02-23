@@ -7,13 +7,13 @@ import FilterByRegions from "../components/filter-search/FilterByRegions.js";
 import Modal from "../components/modal/Modal.js";
 import ModalConfirm from "../components/modal/ModalConfirm.js";
 import Loader from "../components/loader/Loader.js";
-import Store from "./../helpers/Storage.js";
+import Store from "../helpers/Storage.js";
 import {NavLink} from "react-router-dom";
-import IndexedDb  from './../helpers/IndexedDb.js';
+import IndexedDb  from '../helpers/IndexedDb.js';
 import "../config/i18n.js";
 import { withTranslation } from "react-i18next";
 
-class Liste extends React.Component {
+class Databases extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -435,4 +435,4 @@ class Liste extends React.Component {
     )}
 }
 
-export default  withTranslation()(Liste);
+export default  withTranslation()(Databases);

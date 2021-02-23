@@ -4,8 +4,8 @@ import Input from "../components/form/input.js";
 import TextArea from "../components/form/textarea.js";
 import Button from "../components/form/button.js";
 import Checkbox  from "../components/form/checkbox.js";
-import IndexedDb  from './../helpers/IndexedDb.js';
-import StoreFormData from './../helpers/storeFormData.js';
+import IndexedDb  from '../helpers/IndexedDb.js';
+import StoreFormData from '../helpers/storeFormData.js';
 import "../config/i18n.js";
 import { withTranslation } from "react-i18next";
 
@@ -20,7 +20,7 @@ const formData = {
 const form = new StoreFormData('contactForm');
 var formFileds = form.getData();
 
-class Contatti extends React.Component {
+class Contact extends React.Component {
 
     constructor(props) {
       super(props);
@@ -323,4 +323,4 @@ class Contatti extends React.Component {
         )
     }
 }
-export default withTranslation()(Contatti);
+export default withTranslation()(Contact);
