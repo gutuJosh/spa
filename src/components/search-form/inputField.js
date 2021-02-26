@@ -43,14 +43,16 @@ const InputField = (props) => {
              <ul className="custom-selector">
               {props.suggesstions && (
                props.suggesstions.map((item, i) => {
-                 
+                
                return (
                 <li className="suggesstion-item" key={i} onClick={ (event) => {
                   event.preventDefault();
                   setValue(item);
                   props.handleSelect(props.name, item);
                  }}>
-	               
+	               {props.flags &&
+                 <span className={`flag-${props.flags[item]}`}></span>
+                 }
                  {item}
                 
                 </li> 

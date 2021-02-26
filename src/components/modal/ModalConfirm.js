@@ -1,5 +1,7 @@
 import React, { useState }  from 'react';
 import Input from '../form/input.js';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const ModalConfirm = (props) => {
     const [email, saveEmail] = useState(false);
@@ -9,11 +11,11 @@ const ModalConfirm = (props) => {
             <div className="pop-up-panel">
               <div className="form form-big center">
                 <i className={"svg svg-small "+props.status.icn}></i>
-                <p className="text-left">{props.status.message}</p>
+                <p className="text-left">{props.t(props.status.message)}</p>
                     <Input 
                     name="email" 
-                    placeholder="Indirizzo email"
-                    required="L'indirizzo email non è coretto!"
+                    placeholder={props.t('Indirizzo email')}
+                    required={props.t('L\'indirizzo email non è coretto!')}
                     getValue={ (el) => {
                           if(el.value !== '' && (el.value.indexOf('.') === -1 || el.value.indexOf('@') === -1)){
                               el.classList.add('input-error');
@@ -30,7 +32,7 @@ const ModalConfirm = (props) => {
                             props.handleConfirm('ok', email);
                         }
                     }}>
-                        {props.status.btnOkTxt}
+                        {props.t(props.status.btnOkTxt)}
                     </button>
                     &nbsp;&nbsp;&nbsp;
                     <button className={"mtop20 btn flex-item "+props.status.btnKo} onClick={(event) =>{
@@ -39,7 +41,7 @@ const ModalConfirm = (props) => {
                             props.handleConfirm('ko', email);
                         }
                     }}>
-                        {props.status.btnKoTxt}
+                        {props.t(props.status.btnKoTxt)}
                     </button>
                 </div>
               </div>
@@ -49,4 +51,4 @@ const ModalConfirm = (props) => {
     )
 }
 
-export default ModalConfirm;
+export default withTranslation()(ModalConfirm);

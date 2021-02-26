@@ -13,6 +13,7 @@ class SearchForm extends React.Component {
         lists: [],
         nations: [],
         categories: [],
+        iso:[],
         suggesstions:{
           nations: [],
           categories: []
@@ -33,6 +34,7 @@ class SearchForm extends React.Component {
             this.setState({
                 lists: data.liste,
                 nations: data.nations,
+                iso: data.iso,
                 categories: data.categories,
                 suggesstions: {
                   nations: data.nations.sort(),
@@ -189,6 +191,7 @@ class SearchForm extends React.Component {
                 id="nationsSelector" 
                 placeholder={this.props.t("Seleziona la nazione")}
                 suggesstions={this.state.nations}
+                flags={this.state.iso}
                 label={this.props.t("Tutte le nazioni")}
                 handleInput = {this.manageInput}
                 handleSelect = {this.manageSuggestions}
@@ -212,7 +215,7 @@ class SearchForm extends React.Component {
                 /> 
              </div>
              <Button type="btn-yellow center">
-                 <span><i className="pe-7s-search"></i> Cerca</span>
+                 <span><i className="pe-7s-search"></i> {this.props.t("Cerca")}</span>
              </Button>
             </form>
            </div> 

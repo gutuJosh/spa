@@ -28,7 +28,7 @@ class Databases extends React.Component {
       packDetails: null,
       showModal: {
         'active' : false,
-        'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo!"),
+        'message' :"Il pacchetto è stato aggiunto al carrello con successo!",
         'btn' : 'btn-blue',
         'btnTxt' : 'OK',
         'icn' : 'svg-ok'
@@ -36,11 +36,11 @@ class Databases extends React.Component {
       showModalConfirm: {
         'active' : false,
         'id': 'confirmSaveCart',
-        'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo")+":",
+        'message' :"Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo",
         'btnOk' : 'btn-yellow',
-        'btnOkTxt' : this.props.t('Salva email'),
+        'btnOkTxt' : 'Salva email',
         'btnKo' : 'btn-blue',
-        'btnKoTxt' : this.props.t('Continua senza salvare'),
+        'btnKoTxt' : 'Continua senza salvare',
         'icn' : 'svg-ok'
       },
       where: '',
@@ -214,7 +214,7 @@ class Databases extends React.Component {
         if(response.status === 'ko' && response.message === 'cart is empty'){
           let modal = {
             'active' : true,
-            'message' : this.props.t("Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio."),
+            'message' : "Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio.",
             'btn' : 'btn-yellow',
             'btnTxt' : 'OK',
             'icn' : 'svg-attention'

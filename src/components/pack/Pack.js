@@ -1,5 +1,7 @@
 import React from 'react';
 import { getDiscountedPrice } from "./../../helpers/ShoppingCart.js";
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const Pack = (props) => {
 
@@ -13,17 +15,17 @@ const Pack = (props) => {
             </div> 
             <div className="pack-info">
             <h6>
-                <strong>{props.info.pn}</strong>
+                <strong>{props.t(props.info.pn)}</strong>
 			        	<span className={"flag-"+props.info.iso.toLowerCase()}></span>
-                {props.info.n} - {props.info.re}			
+                {props.t(props.info.n)} - {props.t(props.info.re)}			
              </h6>
              <div className="other-info">
 				<p className="packInfo small">
-				<span><i className="pe-7s-folder"></i></span> Anagrafiche: {props.info.i}
+				<span><i className="pe-7s-folder"></i></span> {props.t('Anagrafiche')}: {props.info.i}
 				<br/>
-				<span><i className="pe-7s-clock"></i></span> Aggiornato il {props.info.u}
+				<span><i className="pe-7s-clock"></i></span> {props.t('Aggiornato il')} {props.info.u}
 				<br/>
-				<span><i className="pe-7s-wallet"></i></span> Prezzo:&nbsp;
+				<span><i className="pe-7s-wallet"></i></span> {props.t('Prezzo')}:&nbsp;
                 {Number(props.info.d) > 0 ?
                 <React.Fragment>
 			           <span className="linethrough">{props.info.p} &euro;</span>
@@ -41,7 +43,7 @@ const Pack = (props) => {
               event.preventDefault();
               props.handleCart(props.info);
             }}>
-              <i className="pe-7s-cart"></i> Acquista
+              <i className="pe-7s-cart"></i> {props.t('Acquista')}
             </a>
             <a href="/" 
              className="btn btn-light btn-small"
@@ -49,7 +51,7 @@ const Pack = (props) => {
                e.preventDefault();
                props.handleDetails(props.info);
              }}
-             >Dettagli <i className="pe-7s-angle-right"></i>
+             >{props.t('Dettagli')} <i className="pe-7s-angle-right"></i>
              </a>
             </div> 
           </div>
@@ -58,6 +60,5 @@ const Pack = (props) => {
      
   
   };
-
-  export default Pack;
+  export default withTranslation()(Pack);
   

@@ -218,6 +218,7 @@ const IndexedDb = function(dbName, version = false){
         'status' : 'ok',
         'categories' : [],
         'nations' : [],
+        'iso' : [],
         'liste' : []
        }
        const lists = await this.connection(objectName);
@@ -231,6 +232,7 @@ const IndexedDb = function(dbName, version = false){
            try{
               if(data.nations.includes(item.n) === false && item.n.includes('Tutte') === false){
                   data.nations.push(item.n);
+                  data.iso[item.n] = item.iso.toLowerCase();
               }
               if(data.categories.includes(item.pn) === false && item.pn.includes('Tutte') === false){
                   data.categories.push(item.pn);
