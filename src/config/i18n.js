@@ -2,6 +2,8 @@ import i18n from "i18next";
 import detector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import translationEN from "../locales/en/common.json";
+import countriesEN from "../locales/en/countries_en.json";
+import macroEN from "../locales/en/macro_en.json";
 import translationES from "../locales/en/common.json";
 import translationFR from "../locales/en/common.json";
 import translationIT from "../locales/it/common.json";
@@ -15,7 +17,9 @@ const resources = {
   en: {
     common: translationEN,
     home: homeEN,
-    about: aboutEN
+    about: aboutEN,
+    macro: macroEN,
+    countries:countriesEN
   },
   es: {
     common: translationES,
