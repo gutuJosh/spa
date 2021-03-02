@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const Select = (props) => {
 
   const [inputError, setError] = useState(false);
   const [defaultSelect, setSelect] = useState(props.defaultValue);
+
 
   const handleChange = (e) => {
     const element = e.target;
@@ -16,6 +19,9 @@ const Select = (props) => {
        element.parentNode.nextSibling.classList.add('hidden')    
      }
   }
+
+  
+  
 
   return (
       <div className="cont mtop10">
@@ -41,9 +47,9 @@ const Select = (props) => {
         ref={props.inputRef}
         >
          <option value="">--</option>
-         <option value="IT">Italia</option>
+         <option value="IT">{props.t(`countries:Italia`)}</option>
          {props.values.map((item, i) => (
-            <option key={i} value={item.value}>{item.title}</option>
+            <option key={i} value={item.value}>{props.t(`countries:${item.title}`)}</option>
           ))}
          </select>
         </div>
@@ -54,4 +60,4 @@ const Select = (props) => {
   )
 }
 
-export default Select;
+export default withTranslation()(Select);

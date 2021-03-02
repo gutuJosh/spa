@@ -19,6 +19,7 @@ class SearchForm extends React.Component {
           categories: []
         }
      }
+     this.mainSearchForm = React.createRef();
      this.manageInput = this.manageInput.bind(this);
      this.manageSuggestions = this.manageSuggestions.bind(this);
      this.resetSuggesstions = this.resetSuggesstions.bind(this);
@@ -163,15 +164,17 @@ class SearchForm extends React.Component {
 
     submitForm(event){
       event.preventDefault();
-      this.nationsInput.value =  this.nationsInput.value.trim().toLowerCase();
-      this.categoriesInput.value =  this.categoriesInput.value.trim().toLowerCase();
+      const nation = document.querySelector('#nations').value;
+      const category = document.querySelector('#categories').value;
+      this.nationsInput.value = nation.length > 0 ? nation.trim().toLowerCase() : this.nationsInput.value.trim().toLowerCase();
+      this.categoriesInput.value = category.length > 0 ? category.trim().toLowerCase() : this.categoriesInput.value.trim().toLowerCase();
       //form submision is controlled by the parent component
       if(this.props.handleSubmit){
         //pass input values
          this.props.handleSubmit( this.nationsInput.value, this.categoriesInput.value);
          return;
       }
-      this.refs.searchForm.submit();
+      this.mainSearchForm.submit();
     }
 
     render(){
@@ -184,7 +187,7 @@ class SearchForm extends React.Component {
              method={this.props.method} 
              className="search-form flex wrap" 
              onSubmit={this.submitForm}
-             ref="searchForm">
+             ref="mainSearchForm">
              <div className="flex-item auto">
               <InputField 
                 name="nations" 

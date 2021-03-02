@@ -105,8 +105,8 @@ class Cart extends React.Component{
             </ul>
             :
             <div className="center p10">
-               <p>{this.props.t('Il tuo carrello è vuoto')}: {this.props.t('Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
-               <NavLink to="/liste-email" className="btn btn-yellow"><i className="pe-7s-angle-left"></i> {this.props.t('Vai alla Ricerca')}</NavLink>
+               <p>{this.props.t('cart:Il tuo carrello è vuoto')}: {this.props.t('Inizia ora il tuo acquisto e non appena ritornerai online otterrai uno sconto aggiuntivo del 10% (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
+               <NavLink to="/liste-email" className="btn btn-yellow"><i className="pe-7s-angle-left"></i> {this.props.t('cart:Vai alla Ricerca')}</NavLink>
             </div>
             }
           </div>
@@ -116,9 +116,9 @@ class Cart extends React.Component{
            {this.state.items.length > 0 && (
             <React.Fragment>
               {this.state.checkout === 'open' ?
-               <p className="small mbottom0">{this.props.t('Appena concluso il ordine, il tuo database sarà pronto entro 3 giorni lavorativi, ma di solito ci bastano 24 ore.')}</p>
+               <p className="small mbottom0">{this.props.t('cart:Appena concluso il ordine, il tuo database sarà pronto entro 3 giorni lavorativi, ma di solito ci bastano 24 ore.')}</p>
                :
-               <p className="small alert alert-red pad5">{this.props.t('Non è possibile completare l\'aquisto')}: {this.props.t('hai già un ordine in attesa! Appena ritornerai online, riceverai un promemoria anche di questo carrello.')}</p>
+               <p className="small alert alert-red pad5">{this.props.t('cart:Non è possibile completare l\'aquisto')}: {this.props.t('cart:hai già un ordine in attesa! Appena ritornerai online, riceverai un promemoria anche di questo carrello.')}</p>
               }
             </React.Fragment>
             )}

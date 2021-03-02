@@ -4,14 +4,13 @@ import { initReactI18next } from "react-i18next";
 import translationEN from "../locales/en/common.json";
 import countriesEN from "../locales/en/countries_en.json";
 import macroEN from "../locales/en/macro_en.json";
-import translationES from "../locales/en/common.json";
-import translationFR from "../locales/en/common.json";
 import translationIT from "../locales/it/common.json";
 import homeEN from "../locales/en/home.json";
 import aboutEN from "../locales/en/about.json";
-import aboutES from "../locales/es/about.json";
-import aboutFR from "../locales/fr/about.json";
-
+import cartEN from "../locales/en/cart.json";
+import checkoutEN from "../locales/en/checkout.json";
+import contactEN from "../locales/en/contact.json";
+import quotesEN from "../locales/en/quotes.json";
 // the translations
 const resources = {
   en: {
@@ -19,15 +18,11 @@ const resources = {
     home: homeEN,
     about: aboutEN,
     macro: macroEN,
-    countries:countriesEN
-  },
-  es: {
-    common: translationES,
-    about: aboutES
-  },
-  fr: {
-    common: translationFR,
-    about: aboutFR
+    countries:countriesEN,
+    cart: cartEN,
+    checkout: checkoutEN,
+    contact: contactEN,
+    quotes: quotesEN
   },
   it: {
     common: translationIT

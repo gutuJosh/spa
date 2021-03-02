@@ -31,7 +31,7 @@ const OfflineBadge = (props) => {
 
     const modal = {
         'active' : false,
-        'message' : props.t('Sei nella versione offline di Bancomail')+': '+props.t('hai accesso a contenuti ridotti, ma puoi salvare alcune azioni che verranno eseguite non appena ritornerai in linea!'),
+        'message' : props.t('Sei nella versione offline di Bancomail! Hai accesso a contenuti ridotti, ma puoi salvare alcune azioni che verranno eseguite non appena ritornerai in linea!'),
         'btn' : 'btn-blue',
         'btnTxt' : 'OK',
         'icn' : 'svg-info',

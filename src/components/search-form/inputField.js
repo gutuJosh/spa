@@ -74,6 +74,7 @@ const InputField = (props) => {
                <li data-value="all" onClick={ (event) => {
                   event.preventDefault();
                   setValue(props.label);
+                  setDisplayValue('');
                   props.reset(props.name);
                  }}>
                 {props.t(props.label)}

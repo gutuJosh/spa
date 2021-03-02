@@ -1,5 +1,8 @@
 import React from "react";
-export default class FilterByRegion extends React.Component {
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
+
+class FilterByRegion extends React.Component {
 
     constructor(props) {
         super(props);
@@ -107,7 +110,7 @@ export default class FilterByRegion extends React.Component {
                      value={this.state.val}
                      name="regions"
                      id="regionsSelector"
-                     placeholder="Seleziona la regione"
+                     placeholder={this.props.t("Seleziona la regione")}
                      type="text" 
                      onFocus={(event) => {
                        event.target.parentNode.classList.add('focus');
@@ -133,7 +136,7 @@ export default class FilterByRegion extends React.Component {
                      this.setValue(item);
                      this.selectRegion(item);
                     }}>
-                      {item}
+                      {this.props.t(item)}
                    </li> 
                    )
                   }) 
@@ -143,7 +146,7 @@ export default class FilterByRegion extends React.Component {
                      this.setValue('Tutte le regioni');
                      this.resetSuggesstions();
                     }}>
-                  Tutte le region
+                  {this.props.t('Tutte le regioni')}
                  </li>   
                 </ul>
                </div> 
@@ -154,3 +157,4 @@ export default class FilterByRegion extends React.Component {
         )
     }
 }
+export default withTranslation()(FilterByRegion);

@@ -16,6 +16,8 @@
     "numero di fax": "",
     "Indirizzo email": "",
     "Ripeti email": "",
+    "Risparmia tempo":"",
+    "usa i dati anagrafici per la fatturazione":"",
     "Dati di fatturazione": "",
     "numerico": "",
     "Note": "",
@@ -33,5 +35,11 @@
     "della privacy": "",
     "SALVA": "",
     "Impossibile salvare il form per l'invio": "",
-    "controlla i campi evidenziati in rosso!": ""
+    "controlla i campi evidenziati in rosso!": "",
+    "I dati sono stati salvati con successo! Non appena l'applicazione tornerà online, riceverai una email di notifica.": "",
+    "Ricordati di attivare le notifiche per essere informato subito sullo stato della tua connessione.": "",
+    "Perfetto! Le notifiche da Bancomail sono attive!": "",
+    "Notifiche attive!": "",
+    "Notifiche bloccate!": "",
+    "Attiva le notifiche": ""
 }

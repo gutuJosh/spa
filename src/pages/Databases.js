@@ -350,9 +350,9 @@ class Databases extends React.Component {
             {this.state.lists !== null && (
               <React.Fragment>
               {this.state.filteredResults.length === 1 ?
-                  <h3>{this.state.filteredResults.length}  {this.props.t('pacchetto trovato')} <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
+                  <h3>{this.state.filteredResults.length}  {this.props.t('pacchetto trovato')} <span>{this.props.t(`countries:${this.state.where.charAt(0).toUpperCase()+this.state.where.slice(1)}`)} {this.props.t(`macro:${this.state.what.charAt(0).toUpperCase()+this.state.what.slice(1)}`) + ' ' + this.state.searchFilter}</span></h3>
                   :
-                  <h3>{this.state.filteredResults.length > 0 ?  this.state.filteredResults.length +' '+this.props.t('pacchetti trovati') : ''} <span>{this.state.where} {this.state.what + ' ' + this.state.searchFilter}</span></h3>
+                  <h3>{this.state.filteredResults.length > 0 ?  this.state.filteredResults.length +' '+this.props.t('pacchetti trovati') : ''} <span>{this.props.t(`countries:${this.state.where.charAt(0).toUpperCase()+this.state.where.slice(1)}`)} {this.props.t(`macro:${this.state.what.charAt(0).toUpperCase()+this.state.what.slice(1)}`) + ' ' + this.state.searchFilter}</span></h3>
               }
               </React.Fragment>
               )}   

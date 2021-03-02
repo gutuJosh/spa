@@ -20,10 +20,10 @@ const CartItem = (props) => {
         </div>
         <div className="flex-lg-4 flex-md-4 flex-sm-8">
         <p className="mbottom0 pack-name">
-            <NavLink to={"/details/"+encodeURIComponent(JSON.stringify(item))} >{item.pn}</NavLink>
+            <NavLink to={"/details/"+encodeURIComponent(JSON.stringify(item))} >{props.t(`macro:${item.pn}`)}</NavLink>
             <br/>
             <span className={"flag-"+item.iso.toLowerCase()}></span>
-            <span>{item.n} - {item.re}</span>
+            <span>{props.t(`countries:${item.n}`)} - {props.t(item.re)}</span>
         </p>
         
         </div>
@@ -45,7 +45,7 @@ const CartItem = (props) => {
         </p>
         </div>
         <div className="flex-lg-2 flex-md-2 flex-sm-2 trash center">
-        <a href="/" title={props.t("Rimuovi pacchetto")} onClick={ (event) => {
+        <a href="/" title={props.t('cart:Rimuovi pacchetto')} onClick={ (event) => {
             event.preventDefault();
             props.removeItem(item.pi);
         }}>

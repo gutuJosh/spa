@@ -17,7 +17,7 @@ const OrderSummary = (props) => {
               <tbody>
               {props.items.map((item, i) => (
                 <tr key={i}>
-                    <td>{item.pn} - {item.n} {item.re}</td>
+                    <td>{props.t(`macro:${item.pn}`)} - {props.t(`countries:${item.n}`)} {props.t(item.re)}</td>
                     <td className="center relative">
                      {Number(item.d) > 0 ? 
                       <React.Fragment>
@@ -41,15 +41,15 @@ const OrderSummary = (props) => {
             </colgroup>
             <tbody>
             <tr>
-             <td>{props.t('Prezzo complessivo')}</td>
+             <td>{props.t('cart:Prezzo complessivo')}</td>
              <td className="center">{totalPrice(props.items)} &euro;</td>
             </tr>
             <tr>
-             <td>{props.t('Sconti di listino')}</td>
+             <td>{props.t('checkout:Sconti di listino')}</td>
              <td className="center">{totalDiscount(props.items)} &euro;</td>
             </tr>
             <tr>
-             <td>{props.t('Prezzo d\'acquisto')}</td>
+             <td>{props.t('checkout:Prezzo d\'acquisto')}</td>
              <td className="center">{finalPrice(props.items)} &euro;</td>
             </tr>
             <tr className="spacer"></tr>
@@ -57,7 +57,7 @@ const OrderSummary = (props) => {
             <React.Fragment>
             <tr>
             <td>
-            {props.t('IVA')} (22%)
+            {props.t('checkout:IVA')} (22%)
             </td>
             <td className="center">
                + {setIva(22, props.items)} &euro;
@@ -65,7 +65,7 @@ const OrderSummary = (props) => {
             </tr>
             <tr>
              <td>
-                <b>{props.t('Prezzo Totale')}</b>
+                <b>{props.t('cart:Prezzo Totale')}</b>
              </td>
              <td className="center">
                 <b>{applyIva(22, props.items)}  &euro;</b>
@@ -75,7 +75,7 @@ const OrderSummary = (props) => {
               :
               <tr>
               <td colSpan="2" className="center">
-              {props.t('Al momento l\'IVA non è calcolabile')}: {props.t('non appena ripristinata la connessione, l\'IVA verrà verificata.')}
+              {props.t('checkout:Al momento l\'IVA non è calcolabile')}: {props.t('checkout:non appena ripristinata la connessione, l\'IVA verrà verificata.')}
               </td>
               </tr>
               }

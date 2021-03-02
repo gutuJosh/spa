@@ -20,7 +20,7 @@ const  PackDetails = (props) => {
               </div>
              </div> 
               <div className="pack-name">
-                <h3 className="mtop0">{props.t(item.pn)} | {props.t(item.n)} - {props.t(item.re)}</h3>
+                <h3 className="mtop0">{props.t(`macro:${item.pn}`)} | {props.t(`countries:${item.n}`)} - {props.t(item.re)}</h3>
                 <h4 className="mtop0">{item.i} {props.t('Anagrafiche')}</h4>
               </div>
             </div>
@@ -56,13 +56,13 @@ const  PackDetails = (props) => {
                 <tbody>
                         <tr>
                         <th><strong>{props.t('Categoria')}:</strong></th>
-                         <td>{item.pn}</td>
+                         <td>{props.t(`macro:${item.pn}`)}</td>
                         </tr>
                         <tr>
                         <th><strong>{props.t('Locazione')}:</strong></th>
                         <td>
                          <span className={"flag-"+item.iso.toLowerCase()}></span>
-                         <span>{item.n} - {item.re}</span>
+                         <span>{props.t(`countries:${item.n}`)} - {props.t(item.re)}</span>
                         </td>
                         </tr>
                         <tr>

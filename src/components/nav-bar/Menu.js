@@ -1,10 +1,12 @@
 import React, { useState }from "react";
 import {Link, NavLink} from "react-router-dom";
 import IndexedDb  from './../../helpers/IndexedDb.js';
+import "../../config/i18n.js";
 import i18n from './../../config/i18n';
+import { withTranslation } from "react-i18next";
 import LanguageSelector from './LanguageSelector.js';
 
-function Menu(props) {
+const Menu = (props) => {
   
   const [switcher, setSwitcher] = useState(false);
   const [open, toggleMenu] = useState(false);
@@ -73,7 +75,7 @@ function Menu(props) {
               else{
                 toggleMenu(false);
               }
-           }}>Liste email</Link>
+           }}>{props.t('Liste email')}</Link>
            <ul>
              <li>
                <Link to="/liste-email" 
@@ -81,14 +83,14 @@ function Menu(props) {
                  toggleMenu(false);
                  setSwitcher(false);
                  scrollToTop();
-                }}>Ricerca elenchi</Link>
+                }}>{props.t('Ricerca elenchi')}</Link>
               </li>
              <li>
                <Link to="/liste-email/caratteristiche" onClick={()=>{
                  toggleMenu(false);
                  setSwitcher(false);
                  scrollToTop();
-               }}>Caratteristiche</Link>
+               }}>{props.t('Caratteristiche')}</Link>
               </li>
              <li>
                <Link to="/liste-email/garanzie" 
@@ -96,7 +98,7 @@ function Menu(props) {
                   toggleMenu(false);
                   setSwitcher(false);
                   scrollToTop();
-                }}>Garanzie</Link>
+                }}>{props.t('Garanzie')}</Link>
               </li>
              <li>
                <Link to="/liste-email/conformita-gdpr" 
@@ -104,19 +106,19 @@ function Menu(props) {
                   toggleMenu(false);
                   setSwitcher(false);
                   scrollToTop();
-                }}>Conformità GDPR</Link>
+                }}>{props.t('Conformità GDPR')}</Link>
               </li>
            </ul>
          </li>
          <li>
-           <Link to="/richiesta-preventivo" onClick={()=>setSwitcher(false)}>Preventivi</Link>
+           <Link to="/richiesta-preventivo" onClick={()=>setSwitcher(false)}>{props.t('Preventivi')}</Link>
         </li>
          <li>
            <Link to="/contatti" 
            onClick={()=>{
              setSwitcher(false);
              scrollToTop();
-           }}>Contatti</Link>
+           }}>{props.t('Contatti')}</Link>
          </li>
         </ul>
         <React.Fragment>
@@ -155,4 +157,4 @@ function Menu(props) {
     );
   };
   
-  export default Menu;
+  export default withTranslation()(Menu);

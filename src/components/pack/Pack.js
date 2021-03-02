@@ -15,9 +15,9 @@ const Pack = (props) => {
             </div> 
             <div className="pack-info">
             <h6>
-                <strong>{props.t(props.info.pn)}</strong>
+                <strong>{props.t(`macro:${props.info.pn}`)}</strong>
 			        	<span className={"flag-"+props.info.iso.toLowerCase()}></span>
-                {props.t(props.info.n)} - {props.t(props.info.re)}			
+                {props.t(`countries:${props.info.n}`)} - {props.t(props.info.re)}			
              </h6>
              <div className="other-info">
 				<p className="packInfo small">
