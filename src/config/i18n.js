@@ -11,6 +11,10 @@ import cartEN from "../locales/en/cart.json";
 import checkoutEN from "../locales/en/checkout.json";
 import contactEN from "../locales/en/contact.json";
 import quotesEN from "../locales/en/quotes.json";
+import privacyEN from "../locales/en/privacy-policy.json";
+import featuresEN from "../locales/en/features.json";
+import warrantiesEN from "../locales/en/warranties.json";
+import gdprEN from "../locales/en/gdpr.json";
 // the translations
 const resources = {
   en: {
@@ -22,7 +26,11 @@ const resources = {
     cart: cartEN,
     checkout: checkoutEN,
     contact: contactEN,
-    quotes: quotesEN
+    quotes: quotesEN,
+    privacy: privacyEN,
+    features: featuresEN,
+    warranties: warrantiesEN,
+    gdpr: gdprEN
   },
   it: {
     common: translationIT
