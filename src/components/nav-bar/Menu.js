@@ -129,9 +129,7 @@ const Menu = (props) => {
               placeholder={ i18n.language.toLocaleUpperCase() }
               options={[
               {'value': 'it','title':'IT'},
-              {'value': 'en','title':'EN'},
-              {'value': 'es','title':'ES'},
-              {'value': 'fr','title':'FR'},
+              {'value': 'en','title':'EN'}
             ]}
             selectedValue={i18n.language}
             change={(event) => {
