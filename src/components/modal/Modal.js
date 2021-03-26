@@ -1,4 +1,6 @@
 import React from 'react';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const Modal = (props) => {
 
@@ -8,7 +10,7 @@ const Modal = (props) => {
             <div className="pop-up-panel">
               <div className="center">
                 <i className={"svg svg-small "+props.status.icn}></i>
-                <p>{props.status.message}</p>
+                <p>{props.t(props.status.message)}</p>
                 <button className={"btn "+props.status.btn} onClick={(event) =>{
                     event.preventDefault();
                     if(props.status.closeAction){
@@ -19,7 +21,7 @@ const Modal = (props) => {
                     }
                     
                 }}>
-                    {props.status.btnTxt}
+                    {props.t(props.status.btnTxt)}
                 </button>
               </div>
             </div>
@@ -28,4 +30,4 @@ const Modal = (props) => {
     )
 }
 
-export default Modal;
+export default withTranslation()(Modal);

@@ -4,8 +4,10 @@ import Modal from "../components/modal/Modal.js";
 import ModalConfirm from "../components/modal/ModalConfirm.js";
 import BackBtn from "../components/back-button/BackBtn.js";
 import IndexedDb  from './../helpers/IndexedDb.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class Details extends React.Component {
+class Details extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +15,7 @@ export default class Details extends React.Component {
             item: JSON.parse(decodeURIComponent(this.props.match.params.item)),
             showModal: {
                 'active' : false,
-                'message' : "Il pacchetto è stato aggiunto al carrello con successo!",
+                'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo!"),
                 'btn' : 'btn-blue',
                 'btnTxt' : 'OK',
                 'icn' : 'svg-ok'
@@ -21,11 +23,11 @@ export default class Details extends React.Component {
               showModalConfirm: {
                 'active' : false,
                 'id': 'confirmSaveCart',
-                'message' : "Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo:",
+                'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo! Inserisci la tua email per recuperalo da qualsiasi dispositivo")+":",
                 'btnOk' : 'btn-yellow',
-                'btnOkTxt' : 'Salva email',
+                'btnOkTxt' : this.props.t('Salva email'),
                 'btnKo' : 'btn-blue',
-                'btnKoTxt' : 'Continua senza salvare',
+                'btnKoTxt' : this.props.t('Continua senza salvare'),
                 'icn' : 'svg-ok'
               }
         }
@@ -53,7 +55,7 @@ export default class Details extends React.Component {
           if(response.status === 'ko' && response.message === 'cart is empty'){
             let modal = {
               'active' : true,
-              'message' : "Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio.",
+              'message' : this.props.t("Errore! Impossibile aggiungere pacchetti al carrello. Ci scusiamo per il disagio."),
               'btn' : 'btn-yellow',
               'btnTxt' : 'OK',
               'icn' : 'svg-attention'
@@ -76,7 +78,7 @@ export default class Details extends React.Component {
         let isInCart = false;
         let modal = {
           'active' : true,
-          'message' : "Il pacchetto è stato aggiunto al carrello con successo!",
+          'message' : this.props.t("Il pacchetto è stato aggiunto al carrello con successo!"),
           'btn' : 'btn-blue',
           'btnTxt' : 'OK',
           'icn' : 'svg-ok'
@@ -86,7 +88,7 @@ export default class Details extends React.Component {
            if(cart[i].pi === item.pi){
                modal = {
                 'active' : true,
-                'message' : "Il pacchetto è gia stato aggiunto al carrello!",
+                'message' : this.props.t("Il pacchetto è gia stato aggiunto al carrello!"),
                 'btn' : 'btn-yellow',
                 'btnTxt' : 'OK',
                 'icn' : 'svg-attention'
@@ -172,11 +174,11 @@ export default class Details extends React.Component {
               />
              </div>
              <div className="page-footer text-center">
-              <a href="/liste" title="Clicca per acquistare" className="btn btn-blue" onClick={(event)=>{
+              <a href="/liste" title={this.props.t("Clicca per acquistare")} className="btn btn-blue" onClick={(event)=>{
                 event.preventDefault();
                 this.addItemToCart(item);
                }}>
-    		   <i className="pe-7s-cart"></i> Acquista ora
+    		   <i className="pe-7s-cart"></i> {this.props.t('Acquista ora')}
               </a>
              </div>
             </div>
@@ -193,3 +195,4 @@ export default class Details extends React.Component {
         )
     }
 }
+export default withTranslation()(Details);

@@ -1,9 +1,9 @@
 import React from "react";
 import { formatPrice, getDiscountedPrice, totalPrice, totalDiscount, finalPrice, setIva, applyIva } from "./../../helpers/ShoppingCart.js";
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-function OrderSummary(props) {
-
-
+const OrderSummary = (props) => {
 
     return (
         <React.Fragment>
@@ -17,7 +17,7 @@ function OrderSummary(props) {
               <tbody>
               {props.items.map((item, i) => (
                 <tr key={i}>
-                    <td>{item.pn} - {item.n} {item.re}</td>
+                    <td>{props.t(`macro:${item.pn}`)} - {props.t(`countries:${item.n}`)} {props.t(item.re)}</td>
                     <td className="center relative">
                      {Number(item.d) > 0 ? 
                       <React.Fragment>
@@ -41,15 +41,15 @@ function OrderSummary(props) {
             </colgroup>
             <tbody>
             <tr>
-             <td>Prezzo complessivo</td>
+             <td>{props.t('cart:Prezzo complessivo')}</td>
              <td className="center">{totalPrice(props.items)} &euro;</td>
             </tr>
             <tr>
-             <td>Sconti di listino</td>
+             <td>{props.t('checkout:Sconti di listino')}</td>
              <td className="center">{totalDiscount(props.items)} &euro;</td>
             </tr>
             <tr>
-             <td>Prezzo d'acquisto</td>
+             <td>{props.t('checkout:Prezzo d\'acquisto')}</td>
              <td className="center">{finalPrice(props.items)} &euro;</td>
             </tr>
             <tr className="spacer"></tr>
@@ -57,7 +57,7 @@ function OrderSummary(props) {
             <React.Fragment>
             <tr>
             <td>
-                IVA (22%)
+            {props.t('checkout:IVA')} (22%)
             </td>
             <td className="center">
                + {setIva(22, props.items)} &euro;
@@ -65,7 +65,7 @@ function OrderSummary(props) {
             </tr>
             <tr>
              <td>
-                <b>Prezzo Totale</b>
+                <b>{props.t('cart:Prezzo Totale')}</b>
              </td>
              <td className="center">
                 <b>{applyIva(22, props.items)}  &euro;</b>
@@ -75,7 +75,7 @@ function OrderSummary(props) {
               :
               <tr>
               <td colSpan="2" className="center">
-               Al momento l'IVA non è calcolabile: non appena ripristinata la connessione, l'IVA verrà verificata.
+              {props.t('checkout:Al momento l\'IVA non è calcolabile')}: {props.t('checkout:non appena ripristinata la connessione, l\'IVA verrà verificata.')}
               </td>
               </tr>
               }
@@ -87,4 +87,4 @@ function OrderSummary(props) {
     )
      
 }
-export default OrderSummary;
+export default withTranslation()(OrderSummary);

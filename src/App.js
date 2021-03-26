@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import Home from "./pages/Home"
 import About from "./pages/About"
-import Liste from "./pages/Liste"
-import Garanzie from "./pages/Garanzie"
+import Databases from "./pages/Databases"
+import Warranties from "./pages/Warranties"
 import Gdpr from "./pages/Gdpr"
 import Features from "./pages/Features"
 import Details from "./pages/Details"
-import Contatti from "./pages/Contatti"
+import Contact from "./pages/Contact"
 import Cart from "./pages/Cart"
 import Quotes from "./pages/Quotes"
 import Checkout from "./pages/Checkout"
@@ -48,15 +48,15 @@ function App() {
                 </Route>
                 <Route path="/about" component={About} exact/>
                 <Route path="/about/privacy-policy" component={PrivacyPolicy}/>
-                <Route path="/liste-email"exact>
-                    <Liste history={history}/>
+                <Route path="/liste-email" exact>
+                    <Databases history={history}/>
                 </Route>
-                <Route path="/liste-email/garanzie" component={Garanzie} />
+                <Route path="/liste-email/garanzie" component={Warranties} />
                 <Route path="/liste-email/conformita-gdpr" component={Gdpr} />
                 <Route path="/liste-email/caratteristiche" component={Features} />
                 <Route path="/details/:item" component={Details} />
                 <Route path="/cart" component={Cart} />
-                <Route path="/contatti" component={Contatti} />
+                <Route path="/contatti" component={Contact} />
                 <Route path="/richiesta-preventivo" component={Quotes} />
                 <Route path="/checkout">
                   <Checkout history={history}/>

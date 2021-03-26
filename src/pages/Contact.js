@@ -4,8 +4,10 @@ import Input from "../components/form/input.js";
 import TextArea from "../components/form/textarea.js";
 import Button from "../components/form/button.js";
 import Checkbox  from "../components/form/checkbox.js";
-import IndexedDb  from './../helpers/IndexedDb.js';
-import StoreFormData from './../helpers/storeFormData.js';
+import IndexedDb  from '../helpers/IndexedDb.js';
+import StoreFormData from '../helpers/storeFormData.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const formData = {
   'nome' : '',
@@ -18,7 +20,7 @@ const formData = {
 const form = new StoreFormData('contactForm');
 var formFileds = form.getData();
 
-export default class Contatti extends React.Component {
+class Contact extends React.Component {
 
     constructor(props) {
       super(props);
@@ -94,7 +96,7 @@ export default class Contatti extends React.Component {
         this.setState({
           showModal : {
             'active' : true,
-            'message' : "Impossibile salvare il form per l'invio: controlla i campi evidenziati in rosso!",
+            'message' : this.props.t("checkout:Impossibile salvare il form per l'invio! Controlla i campi evidenziati in rosso!"),
             'btn' : 'btn-red',
             'btnTxt' : 'OK',
              'icn' : 'svg-nope'
@@ -145,10 +147,10 @@ export default class Contatti extends React.Component {
            <div className="flex-grid">
             <div className="flex-lg-12 flex-md-12 flex-sm-12">
               <h2 className="text-white">
-               Qualunque cosa tu voglia dirci noi vogliamo ascoltarla  
+               {this.props.t('contact:Qualunque cosa tu voglia dirci noi vogliamo ascoltarla')}  
               </h2>
               <p className="text-white">
-              Se hai fretta o vuoi sentire la nostra voce, puoi prenotare una richiamata oppure chiamaci al:  
+              {this.props.t('contact:Se hai fretta o vuoi sentire la nostra voce, puoi prenotare una richiamata oppure chiamaci al')}:  
               <a href="/" className="text-white" onClick={(event) => {
                 event.preventDefault();
                 window.location='tel:390108681372';
@@ -162,13 +164,13 @@ export default class Contatti extends React.Component {
                 &nbsp;+39 010-8446402.
                 </a>
               <br/>
-               Se hai bisogno di informazioni o se vuoi richiederci un preventivo oppure proporci una collaborazione:
+              {this.props.t('contact:Se hai bisogno di informazioni o se vuoi richiederci un preventivo oppure proporci una collaborazione')}:
               </p>
             </div>
            </div>
            <div className="flex-grid page-header mtop20">
             <div className="flex-lg-12 flex-md-12 flex-sm-12"> 
-             <h3>Parliamo italiano, inglese, francese e spagnolo.</h3>
+             <h3>{this.props.t('contact:Parliamo italiano, inglese, francese e spagnolo.')}</h3>
             </div>
            </div>
          </div>
@@ -182,9 +184,9 @@ export default class Contatti extends React.Component {
             <div className="flex-lg-6 flex-md-6 flex-sm-12">
                 <Input 
                 name="nome" 
-                placeholder="es. Mario Bianchi" 
-                label="Nome contatto"
-                required="Campo obbligatorio"
+                placeholder={this.props.t("checkout:es. Mario Bianchi")} 
+                label={this.props.t("contact:Nome contatto")}
+                required={this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.nome = el)}
                 defaultValue={this.state.formData.nome}
                 getValue={ (element)=>{
@@ -193,8 +195,8 @@ export default class Contatti extends React.Component {
                 /> 
                 <Input 
                 name="azienda" 
-                placeholder="es. Progetti Industriali di Mario Bianchi" 
-                label="Azienda"
+                placeholder={this.props.t("checkout:es. Progetti Industriali di Mario Bianchi")} 
+                label={this.props.t("contact:Azienda")}
                 inputRef={el => (this.azienda = el)}
                 defaultValue={this.state.formData.azienda}
                 getValue={ (element)=>{
@@ -203,9 +205,9 @@ export default class Contatti extends React.Component {
                 /> 
                 <Input 
                 name="email" 
-                placeholder="es. mario.bianchi@info.it" 
-                label="Indirizzo email"
-                required="Campo obbligatorio"
+                placeholder={this.props.t("contact:es. mario.bianchi@info.it")} 
+                label={this.props.t("checkout:Indirizzo email")}
+                required={this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.email = el)}
                 defaultValue={this.state.formData.email}
                 getValue={ (element)=>{
@@ -214,8 +216,8 @@ export default class Contatti extends React.Component {
                 />
                 <Input 
                 name="tel" 
-                placeholder="es. 0108446402" 
-                label="Telefono"
+                placeholder={this.props.t("es. 0108446402")} 
+                label={this.props.t("checkout:Telefono")}
                 inputRef={el => (this.tel = el)}
                 defaultValue={this.state.formData.tel}
                 getValue={ (element)=>{
@@ -228,11 +230,11 @@ export default class Contatti extends React.Component {
             <div className="flex-lg-6 flex-md-6 flex-sm-12">
                   <TextArea 
                    name="note"
-                   label="Informazioni aggiuntive"
-                   placeholder="Max. 2000 caratteri"
+                   label={this.props.t("contact:Informazioni aggiuntive")}
+                   placeholder={this.props.t("contact:Max. 2000 caratteri")}
                    maxlength="2000"
                    inputRef={el => (this.note = el)}
-                   required="Campo obbligatorio"
+                   required={this.props.t("checkout:Campo obbligatorio")}
                    style={{height:"236px"}}
                    defaultValue={this.state.formData.note}
                    getValue={ (value)=>{
@@ -242,16 +244,16 @@ export default class Contatti extends React.Component {
 
                 <div className="cont pad10">
                   <Checkbox id="privacy-prev" inputRef={el => (this.privacyPrev = el)}>
-                  Accetto la  <a href="/" className="text-blue" onClick={(e) => {
+                  {this.props.t('checkout:Accetto la')}  <a href="/" className="text-blue" onClick={(e) => {
                     e.preventDefault();
                     this.props.history.push('/about/privacy-policy');
-                  }}>normativa</a> della privacy*
+                  }}>{this.props.t('checkout:normativa')}</a> {this.props.t('checkout:della privacy')}*
                   </Checkbox>
                 </div>
                
                 <div className="cont mtop20">
                  <Button type="btn-blue center f-right">
-                      SALVA
+                 {this.props.t('checkout:SALVA')}
                  </Button> 
                 </div>  
             </div>
@@ -260,8 +262,8 @@ export default class Contatti extends React.Component {
           <div className="center mtop20">
            <i className="svg svg-small svg-ok"></i>
            <p>
-           I dati sono stati salvati con successo! Non appena l'applicazione tornerà online,  invieremo il tuo form. 
-           Riceverai una risposta da parte di un nostro operatore entro 48 ore lavorative!
+           {this.props.t('contact:I dati sono stati salvati con successo! Non appena l\'applicazione tornerà online, invieremo il tuo form.')} &nbsp;
+           {this.props.t('contact:Riceverai una risposta da parte di un nostro operatore entro 48 ore lavorative!')}
             </p>
           </div>
           }
@@ -271,7 +273,7 @@ export default class Contatti extends React.Component {
             <div className="flex-grid">
              <div className="flex-lg-12 flex-md-12 flex-sm-12 center">
                <i className="svg svg-small svg-attention"></i>
-               <p>Non è possibile inviare richieste informazioni! Ci scusiamo per il disagio.</p>
+               <p>{this.props.t('contact:Non è possibile inviare richieste informazioni! Ci scusiamo per il disagio.')}</p>
              </div>
             </div>
          </div>
@@ -286,7 +288,7 @@ export default class Contatti extends React.Component {
            <div className="flex-grid">
             <div className="flex-lg-4 flex-md-4 flex-sm-12 center">
               <p>
-                Richieste generiche o di supporto:
+              {this.props.t('contact:Richieste generiche o di supporto')}:
                 <br/>
                <a href="mailto:info@bancomail.it" className="text-skyblue">info@bancomail.it</a>
                <br/>
@@ -295,7 +297,7 @@ export default class Contatti extends React.Component {
             </div>
             <div className="flex-lg-4 flex-md-4 flex-sm-12 center">
              <p>
-                 Richieste di preventivo o amministrative:
+             {this.props.t('contact:Richieste di preventivo o amministrative')}:
                 <br/>
                <a href="mailto:commerciale@bancomail.it" className="text-skyblue">commerciale@bancomail.it</a>
                <br/>
@@ -304,7 +306,7 @@ export default class Contatti extends React.Component {
             </div>
             <div className="flex-lg-4 flex-md-4 flex-sm-12 center">
                <p>
-               Marketing e Web:
+               {this.props.t('contact:Marketing e Web')}:
                 <br/>
                <a href="mailto:marketing@bancomail.it" className="text-skyblue">marketing@bancomail.it</a>
               </p>
@@ -321,3 +323,4 @@ export default class Contatti extends React.Component {
         )
     }
 }
+export default withTranslation()(Contact);

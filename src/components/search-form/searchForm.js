@@ -2,8 +2,10 @@ import React from "react";
 import InputField from "./inputField.js";
 import Button from "../form/button.js";
 import IndexedDb  from './../../helpers/IndexedDb.js';
+import "../../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
-export default class SearchForm extends React.Component {
+class SearchForm extends React.Component {
 
     constructor(props) {
       super(props);
@@ -11,11 +13,13 @@ export default class SearchForm extends React.Component {
         lists: [],
         nations: [],
         categories: [],
+        iso:[],
         suggesstions:{
           nations: [],
           categories: []
         }
      }
+     this.mainSearchForm = React.createRef();
      this.manageInput = this.manageInput.bind(this);
      this.manageSuggestions = this.manageSuggestions.bind(this);
      this.resetSuggesstions = this.resetSuggesstions.bind(this);
@@ -31,12 +35,14 @@ export default class SearchForm extends React.Component {
             this.setState({
                 lists: data.liste,
                 nations: data.nations,
+                iso: data.iso,
                 categories: data.categories,
                 suggesstions: {
                   nations: data.nations.sort(),
                   categories: data.categories.sort()
                 }
             });
+            
             if(this.props.getAllLists){//pass data to parents
               this.props.getAllLists(data.liste);
             }
@@ -158,15 +164,17 @@ export default class SearchForm extends React.Component {
 
     submitForm(event){
       event.preventDefault();
-      this.nationsInput.value =  this.nationsInput.value.trim().toLowerCase();
-      this.categoriesInput.value =  this.categoriesInput.value.trim().toLowerCase();
+      const nation = document.querySelector('#nations').value;
+      const category = document.querySelector('#categories').value;
+      this.nationsInput.value = nation.length > 0 ? nation.trim().toLowerCase() : this.nationsInput.value.trim().toLowerCase();
+      this.categoriesInput.value = category.length > 0 ? category.trim().toLowerCase() : this.categoriesInput.value.trim().toLowerCase();
       //form submision is controlled by the parent component
       if(this.props.handleSubmit){
         //pass input values
          this.props.handleSubmit( this.nationsInput.value, this.categoriesInput.value);
          return;
       }
-      this.refs.searchForm.submit();
+      this.mainSearchForm.submit();
     }
 
     render(){
@@ -179,14 +187,15 @@ export default class SearchForm extends React.Component {
              method={this.props.method} 
              className="search-form flex wrap" 
              onSubmit={this.submitForm}
-             ref="searchForm">
+             ref="mainSearchForm">
              <div className="flex-item auto">
               <InputField 
                 name="nations" 
                 id="nationsSelector" 
-                placeholder="Seleziona la nazione"
+                placeholder={this.props.t("Seleziona la nazione")}
                 suggesstions={this.state.nations}
-                label="Tutte le nazioni"
+                flags={this.state.iso}
+                label={this.props.t("Tutte le nazioni")}
                 handleInput = {this.manageInput}
                 handleSelect = {this.manageSuggestions}
                 reset={this.resetSuggesstions}
@@ -198,9 +207,9 @@ export default class SearchForm extends React.Component {
                <InputField 
                 name="categories" 
                 id="categoriesSelector" 
-                placeholder="Seleziona una categoria"
+                placeholder={this.props.t("Seleziona una categoria")}
                 suggesstions={this.state.categories}
-                label="Tutte le categorie"
+                label={this.props.t("Tutte le categorie")}
                 handleInput = {this.manageInput}
                 handleSelect = {this.manageSuggestions}
                 reset={this.resetSuggesstions}
@@ -209,12 +218,13 @@ export default class SearchForm extends React.Component {
                 /> 
              </div>
              <Button type="btn-yellow center">
-                 <span><i className="pe-7s-search"></i> Cerca</span>
+                 <span><i className="pe-7s-search"></i> {this.props.t("Cerca")}</span>
              </Button>
             </form>
            </div> 
           </React.Fragment>
         )
-       }
-    
+       } 
 }
+
+export default withTranslation()(SearchForm);

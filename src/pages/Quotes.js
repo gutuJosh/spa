@@ -6,6 +6,8 @@ import Button from "../components/form/button.js";
 import Checkbox  from "../components/form/checkbox.js";
 import IndexedDb  from './../helpers/IndexedDb.js';
 import StoreFormData from './../helpers/storeFormData.js';
+import "../config/i18n.js";
+import { withTranslation } from "react-i18next";
 
 const formData = {
   'cosa' : '',
@@ -20,7 +22,7 @@ const formData = {
 const form = new StoreFormData('prevForm');
 var formFileds = form.getData();
 
-export default class Quotes extends React.Component {
+class Quotes extends React.Component {
 
     constructor(props) {
       super(props);
@@ -112,7 +114,7 @@ export default class Quotes extends React.Component {
         this.setState({
           showModal : {
             'active' : true,
-            'message' : "Impossibile salvare il form per l'invio: controlla i campi evidenziati in rosso!",
+            'message' : this.props.t("Impossibile salvare il form per l'invio! Controlla i campi evidenziati in rosso!"),
             'btn' : 'btn-red',
             'btnTxt' : 'OK',
              'icn' : 'svg-nope'
@@ -163,20 +165,19 @@ export default class Quotes extends React.Component {
            <div className="flex-grid">
             <div className="flex-lg-12 flex-md-12 flex-sm-12">
               <h2 className="text-white">
-                Hai bisogno di profilazione avanzata? 
+                {this.props.t("quotes:Hai bisogno di profilazione avanzata?")}
               </h2>
               <p className="text-white">
-               Cerchi un target particolare? Scrivici! 
-               Un commerciale Bancomail analizza il tuo target ed entro un giorno lavorativo ti dà tutti i dettagli che ti servono, compresa la quantità di anagrafiche disponibili. 
-               Rispetto ai pacchetti disponibili online, i preventivi personalizzati consentono anche profilazioni avanzate: ad esempio forma sociale, fasce di fatturato, 
-               numero di dipendenti, microcategorie, province e CAP, classificazione a stelle per gli hotel.    
+              {this.props.t('quotes:Cerchi un target particolare?')}  {this.props.t('quotes:Scrivici!')}&nbsp;
+                {this.props.t('quotes:Un commerciale Bancomail analizza il tuo target ed entro un giorno lavorativo ti dà tutti i dettagli che ti servono, compresa la quantità di anagrafiche disponibili.')}&nbsp;
+                {this.props.t('quotes:Rispetto ai pacchetti disponibili online, i preventivi personalizzati consentono anche profilazioni avanzate')}: {this.props.t('quotes:ad esempio forma sociale, fasce di fatturato, numero di dipendenti, microcategorie, province e CAP, classificazione a stelle per gli hotel.')}    
               </p>
             </div>
            </div>
            <div className="flex-grid page-header mtop20">
             <div className="flex-lg-12 flex-md-12 flex-sm-12"> 
-             <h3> Richiedi un preventivo gratuito</h3>
-             <p>Se deciderai di concludere il tuo acquisto, avrai diritto a un 10% di sconto aggiuntivo (cumulabile con altre promozioni fino a un massimo del 50%)!</p>
+             <h3>{this.props.t('quotes:Richiedi un preventivo gratuito')}</h3>
+             <p>{this.props.t('quotes:Se deciderai di concludere il tuo acquisto, avrai diritto a un 10% di sconto aggiuntivo (cumulabile con altre promozioni fino a un massimo del 50%)!')}</p>
             </div>
            </div>
          </div>
@@ -188,12 +189,12 @@ export default class Quotes extends React.Component {
            {this.state.isFormSubmited === false ?
           <form className="form form-big flex-grid prevForm" method="post" action="/" ref="prevForm" onSubmit={this.submitPrevForm}>
             <div className="flex-lg-6 flex-md-6 flex-sm-12">
-              <h4>Spiegaci il tuo target:</h4>
+              <h4> {this.props.t('quotes:Spiegaci il tuo target')}:</h4>
                 <Input 
                 name="cosa" 
-                placeholder="es. Ristoranti e alberghi" 
-                label="Settore di interesse"
-                required="Campo obbligatorio"
+                placeholder= {this.props.t("quotes:es. Ristoranti e alberghi")} 
+                label={this.props.t("quotes:Settore di interesse")}
+                required= {this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.what = el)}
                 defaultValue={this.state.formData.cosa}
                 getValue={ (element)=>{
@@ -202,9 +203,9 @@ export default class Quotes extends React.Component {
                 /> 
                 <Input 
                 name="dove" 
-                placeholder="es. Italia, Sicilia" 
-                label="Locazione geografica"
-                required="Campo obbligatorio"
+                placeholder= {this.props.t("quotes:es. Italia, Sicilia")} 
+                label= {this.props.t("quotes:Locazione geografica")}
+                required= {this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.where = el)}
                 defaultValue={this.state.formData.dove}
                 getValue={ (element)=>{
@@ -213,8 +214,8 @@ export default class Quotes extends React.Component {
                 /> 
                 <TextArea 
                    name="note"
-                   label="Informazioni aggiuntive"
-                   placeholder="Max. 2000 caratteri"
+                   label= {this.props.t("contact:Informazioni aggiuntive")}
+                   placeholder= {this.props.t("contact:Max. 2000 caratteri")}
                    maxlength="2000"
                    inputRef={el => (this.note = el)}
                    style={{height:"144px"}}
@@ -227,12 +228,12 @@ export default class Quotes extends React.Component {
                
             </div>
             <div className="flex-lg-6 flex-md-6 flex-sm-12">
-                <h4>Come contattarti?</h4>
+                <h4>{this.props.t('quotes:Come contattarti?')}</h4>
                 <Input 
                 name="rsoc" 
-                placeholder="es. Progetti Industriali di Mario Bianchi" 
-                label="Ragione sociale"
-                required="Campo obbligatorio"
+                placeholder={this.props.t("checkout:es. Progetti Industriali di Mario Bianchi")} 
+                label={this.props.t("quotes:Ragione sociale")}
+                required={this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.rsoc = el)}
                 defaultValue={this.state.formData.rsoc}
                 getValue={ (element)=>{
@@ -241,9 +242,9 @@ export default class Quotes extends React.Component {
                 /> 
                 <Input 
                 name="nome" 
-                placeholder="es. Mario Bianchi" 
-                label="Nome contatto"
-                required="Campo obbligatorio"
+                placeholder={this.props.t("checkout:es. Mario Bianchi")} 
+                label={this.props.t("checkout:Nome contatto")}
+                required={this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.nome = el)}
                 defaultValue={this.state.formData.nome}
                 getValue={ (element)=>{
@@ -252,9 +253,9 @@ export default class Quotes extends React.Component {
                 /> 
                 <Input 
                 name="email" 
-                placeholder="es. mario.bianchi@info.it" 
-                label="Indirizzo email"
-                required="Campo obbligatorio"
+                placeholder={this.props.t("contact:es. mario.bianchi@info.it")} 
+                label={this.props.t("checkout:Indirizzo email")}
+                required={this.props.t("checkout:Campo obbligatorio")}
                 inputRef={el => (this.email = el)}
                 defaultValue={this.state.formData.email}
                 getValue={ (element)=>{
@@ -263,8 +264,8 @@ export default class Quotes extends React.Component {
                 />
                 <Input 
                 name="tel" 
-                placeholder="es. 0108446402" 
-                label="Telefono"
+                placeholder={this.props.t("checkout:es.") + " 0108446402"} 
+                label={this.props.t("checkout:Telefono")}
                 inputRef={el => (this.tel = el)}
                 defaultValue={this.state.formData.tel}
                 getValue={ (element)=>{
@@ -273,15 +274,15 @@ export default class Quotes extends React.Component {
                 />
                 <div className="cont pad10">
                   <Checkbox id="privacy-prev" inputRef={el => (this.privacyPrev = el)}>
-                  Accetto la  <a href="/" className="text-blue" onClick={(e) => {
+                  {this.props.t('checkout:Accetto la')}  <a href="/" className="text-blue" onClick={(e) => {
                     e.preventDefault();
                     this.props.history.push('/about/privacy-policy');
-                  }}>normativa</a> della privacy*
+                  }}>{this.props.t('checkout:normativa')}</a> {this.props.t('checkout:della privacy')}*
                   </Checkbox>
                 </div>
                 <div className="cont mtop20">
                  <Button type="btn-blue center f-right">
-                      SALVA
+                 {this.props.t('checkout:SALVA')}
                  </Button> 
                 </div>  
             </div>
@@ -290,8 +291,8 @@ export default class Quotes extends React.Component {
           <div className="center mtop20">
            <i className="svg svg-small svg-ok"></i>
            <p>
-           I dati sono stati salvati con successo! Non appena l'applicazione tornerà online, invieremo il tuo form. 
-           Un commerciale Bancomail analizzerà il tuo target ed entro un giorno lavorativo ti darà tutti i dettagli che ti servono.
+           {this.props.t('quotes:I dati sono stati salvati con successo!')}&nbsp;{this.props.t('quotes:Non appena l\'applicazione tornerà online, invieremo il tuo form.')}&nbsp;
+           {this.props.t('quotes:Un commerciale Bancomail analizzerà il tuo target ed entro un giorno lavorativo ti darà tutti i dettagli che ti servono.')}
             </p>
           </div>
           }
@@ -301,7 +302,7 @@ export default class Quotes extends React.Component {
          <div className="flex-grid">
           <div className="flex-lg-12 flex-md-12 flex-sm-12 center">
             <i className="svg svg-small svg-attention"></i>
-            <p>Non è possibile inviare richieste di preventivo! Ci scusiamo per il disagio.</p>
+            <p>{this.props.t('Non è possibile inviare richieste di preventivo! Ci scusiamo per il disagio.')}</p>
           </div>
          </div>
       </div>
@@ -319,3 +320,4 @@ export default class Quotes extends React.Component {
         )
     }
 }
+export default withTranslation()(Quotes);
