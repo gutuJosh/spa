@@ -1,6 +1,6 @@
 ## About
 This is an e-commerce single page application bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-It use React Router for routing and i18next library for internationalization.
+It use React Router for routing and [react-i18next](https://react.i18next.com/) library for internationalization.
 You can see it on action here : https://www.bancomail.com
 The app runs when the user goes in offline mode.
 
