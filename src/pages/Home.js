@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-//import worker from '../worker.js';
-//import workerSetup from '../workerSetup.js';
+import worker from '../worker.js';
+import workerSetup from '../workerSetup.js';
 import ListItem from "./../components/unordered-list/listItem.js";
 import SearchForm from "./../components/search-form/searchForm.js";
 import Store from "./../helpers/Storage.js";
@@ -22,7 +22,7 @@ class Home extends React.Component {
      catch(e){
        //console.log(e.message);
      }
-    /*if(Store.getSession('check4update') === false){
+    if(Store.getSession('check4update') === false){
       this.worker = new workerSetup(worker);
         this.worker.onmessage = (event) => {
         console.log(event.data);
@@ -30,7 +30,7 @@ class Home extends React.Component {
           Store.setSession('check4update', 1);
         }
       }; 
-    } */
+    }
     Store.removeSession('offlineSearch');
    }
 
